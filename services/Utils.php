@@ -59,7 +59,7 @@ class Utils
         // Vérifie si la session utilisateur est active
         if (!isset($_SESSION["user"])) {
             // Redirige l'utilisateur vers la page de connexion
-            Utils::redirect("connection");
+            Utils::redirect("register");
         }
     }
 }
