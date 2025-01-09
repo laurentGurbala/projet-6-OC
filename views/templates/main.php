@@ -52,7 +52,16 @@
         </main>
 
         <footer>
-
+            <nav aria-label="Liens du bas de page">
+                <ul class="footer-menu">
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+            <p>Tom Troc©</p>
+            <a href="/" class="footer-logo" aria-label="Retour à l'acceuil">
+                <img src="images/logos/logo_tom_troc_simple.png" alt="Tom Troc">
+            </a>
         </footer>
     </div>
 </body>

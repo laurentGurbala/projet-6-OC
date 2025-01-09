@@ -5,6 +5,7 @@
 @import "./reset.css";
 @import "./base.css";
 @import "./header.css";
+@import "./footer.css";
 
 /* Variables */
 :root {

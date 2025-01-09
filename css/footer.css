@@ -1,0 +1,19 @@
+footer {
+    background: var(--color-bg-white);
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding: 23px;
+    font-size: 12px;
+}
+
+.footer-logo {
+    display: block;
+    width: 22px;
+    margin-right: 20px;
+}
+
+.footer-menu {
+    display: flex;
+    gap: 40px;
+}
