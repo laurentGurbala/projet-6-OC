@@ -29,7 +29,7 @@
             <div class="header-container">
                 <!-- Logo -->
                 <a href="/" class="logo" aria-label="Retour à l'acceuil">
-                    <img src="images/logo_tom_troc.png" alt="Tom Troc">
+                    <img src="images/logos/logo_tom_troc.png" alt="Tom Troc">
                 </a>
 
                 <!-- Navigation principal -->
@@ -46,9 +46,14 @@
                 <a href="#" aria-label="Se connecter">Connexion</a>
             </div>
         </header>
+
         <main>
             <?= $content ?>
         </main>
+
+        <footer>
+
+        </footer>
     </div>
 </body>
 
