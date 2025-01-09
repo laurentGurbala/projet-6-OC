@@ -1,0 +1,22 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+/* Import CSS */
+@import "./reset.css";
+@import "./base.css";
+@import "./header.css";
+
+/* Variables */
+:root {
+    --color-bg-primary: #F5F3EF;
+    --color-bg-secondary: #FAF9F7;
+    --color-font-primary: #292929;
+    --color-font-secondary: #000;
+
+    --font-family-primary: "Inter", serif;
+    --font-weight-primary: 400;
+    --font-size-primary: 14px;
+
+    --font-family-secondary: "Playfair", serif;
+    --font-size-primary: 36px;
+}

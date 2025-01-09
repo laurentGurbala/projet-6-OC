@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    padding: 14px 0;
+    font-size: 14px;
+}
+
+.header-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 138px;
+}
+
+.main-menu {
+    display: flex;
+    gap: 44px;
+}
+
+.user-actions {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
