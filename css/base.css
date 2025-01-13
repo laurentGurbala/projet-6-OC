@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    background: var(--color-bg-primary);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-primary);
+    color: var(--color-font-primary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1440px;
+    min-width: 320px;
+}

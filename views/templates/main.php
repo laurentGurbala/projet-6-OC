@@ -16,15 +16,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/index.js"></script>
     <title><?= $title ?></title>
 </head>
 
 <body>
-    <h1>Template du main</h1>
+    <div class="main-container">
+        <header>
+            <div class="header-container">
+                <!-- Navigation principal -->
+                <div class="main-menu">
+                    <!-- Logo -->
+                    <a href="/" class="logo" aria-label="Retour à l'acceuil">
+                        <img src="images/logos/logo_tom_troc.png" alt="Tom Troc">
+                    </a>
 
-    <main>
-        <?= $content ?>
-    </main>
+                    <!-- Navigation desktop -->
+                    <nav class="desktop-menu" aria-label="Menu principal">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="#">Nos livres à l'échange</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Icon hamburger -->
+                    <div class="hamburger-menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+
+                <!-- Navigation mobile -->
+                <nav class="mobile-menu">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Nos livres à l'échange</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <a href="#" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
+                <a href="#" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
+                <a href="#" aria-label="Se connecter">Connexion</a>
+            </div>
+        </header>
+
+        <main>
+            <?= $content ?>
+        </main>
+
+        <footer>
+            <nav aria-label="Liens du bas de page">
+                <ul class="footer-menu">
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+            <p>Tom Troc©</p>
+            <a href="/" class="footer-logo" aria-label="Retour à l'acceuil">
+                <img src="images/logos/logo_tom_troc_simple.png" alt="Tom Troc">
+            </a>
+        </footer>
+    </div>
 </body>
 
 </html>
