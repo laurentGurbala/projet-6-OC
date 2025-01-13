@@ -6,6 +6,7 @@
 @import "./base.css";
 @import "./header.css";
 @import "./footer.css";
+@import "./utilities.css";
 
 /* Variables */
 :root {

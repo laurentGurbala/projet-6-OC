@@ -20,6 +20,7 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/index.js"></script>
     <title><?= $title ?></title>
 </head>
 
@@ -27,14 +28,29 @@
     <div class="main-container">
         <header>
             <div class="header-container">
-                <!-- Logo -->
-                <a href="/" class="logo" aria-label="Retour à l'acceuil">
-                    <img src="images/logos/logo_tom_troc.png" alt="Tom Troc">
-                </a>
-
                 <!-- Navigation principal -->
-                <nav aria-label="Menu principal">
-                    <ul class="main-menu">
+                <div class="main-menu">
+                    <!-- Logo -->
+                    <a href="/" class="logo" aria-label="Retour à l'acceuil">
+                        <img src="images/logos/logo_tom_troc.png" alt="Tom Troc">
+                    </a>
+
+                    <!-- Navigation desktop -->
+                    <nav class="desktop-menu" aria-label="Menu principal">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="#">Nos livres à l'échange</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Icon hamburger -->
+                    <div class="hamburger-menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+
+                <!-- Navigation mobile -->
+                <nav class="mobile-menu">
+                    <ul>
                         <li><a href="#">Accueil</a></li>
                         <li><a href="#">Nos livres à l'échange</a></li>
                     </ul>
