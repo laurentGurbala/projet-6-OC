@@ -6,6 +6,7 @@
 @import "./base.css";
 @import "./header.css";
 @import "./footer.css";
+@import "./register.css";
 @import "./utilities.css";
 
 /* Variables */
@@ -14,13 +15,18 @@
     --color-bg-secondary: #FAF9F7;
     --color-bg-white: white;
 
+    --bg-btn-primary: #00AC66;
+    --bg-btn-hover: #006D41;
+    --bg-bgn-alt: #F5F3EF;
+
     --color-font-primary: #292929;
     --color-font-secondary: #000;
+    --color-font-tertiaire: #a6a6a6;
 
     --font-family-primary: "Inter", serif;
     --font-weight-primary: 400;
     --font-size-primary: 14px;
 
     --font-family-secondary: "Playfair", serif;
-    --font-size-primary: 36px;
+    --font-size-secondary: 36px;
 }
