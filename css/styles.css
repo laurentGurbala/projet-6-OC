@@ -28,6 +28,7 @@
     --font-weight-primary: 400;
     --font-size-primary: 14px;
 
-    --font-family-secondary: "Playfair", serif;
-    --font-size-secondary: 36px;
+    --font-family-title-desktop: "Playfair", serif;
+    --font-size-title-desktop: 36px;
+    --font-size-title-mobile: 30px;
 }

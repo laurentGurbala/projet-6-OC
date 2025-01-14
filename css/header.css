@@ -31,7 +31,6 @@ header {
 }
 
 .user-actions {
-    border: 1px solid blueviolet;
     flex: 1;
     display: flex;
     align-items: center;

@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    align-items: center;
     width: 100%;
 }
 
@@ -52,4 +53,34 @@ input[type="password"] {
     background-image: url("../images/png/bibliotheque.png");
     background-size: cover;
     background-position: center;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        width: 100%;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 78px 20px 100px;
+    }
+
+    .form-container h1 {
+        margin-bottom: 32px;
+    }
+
+    .form-container form {
+        width: 335px;
+    }
+
+    .image-container {
+        background-size: contain;
+        height: 462px;
+    }
 }
