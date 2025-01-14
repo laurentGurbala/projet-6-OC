@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 130px 150px;
+}
+
+.form-container h1 {
+    margin-bottom: 56px;
+}
+
+.form-container form {
+    width: 322px;
+}
+
+.form-container .btn {
+    padding: 22px 125px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin-bottom: 32px;
+}
+
+.link {
+    font-size: var(--font-size-primary);
+}
+
+.link a {
+    text-decoration: underline;
+}
+
+.image-container {
+    width: 720px;
+    height: 886px;
+    background-image: url("../images/png/bibliotheque.png");
+    background-size: cover;
+    background-position: center;
+}

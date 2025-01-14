@@ -16,13 +16,45 @@ li {
     list-style-type: none;
 }
 
-img {
-    width: 100%;
-    display: block;
+h1 {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-primary);
+    color: var(--color-font-secondary);
+    font-size: var(--font-size-secondary);
+}
+
+label {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-primary);
+    color: var(--color-font-tertiaire);
+    font-size: var(--font-size-primary);
+    margin-bottom: 10px;
 }
 
 .main-container {
     width: 100%;
     max-width: 1440px;
     min-width: 320px;
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 22px 38px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--bg-btn-primary);
+}
+
+.btn-alt {
+    background: var(--bg-btn-alt);
+}
+
+.btn:hover {
+    background: var(--bg-btn-hover);
 }
