@@ -14,6 +14,7 @@ spl_autoload_register(function ($className) {
         'models/',
         'controllers/',
         'views/',
+        "exceptions/",
     ];
 
     // Parcourt les dossiers pour rechercher la classe

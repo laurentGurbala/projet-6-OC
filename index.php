@@ -20,7 +20,19 @@ try {
             $authController = new AuthController();
             $authController->showRegistration();
             break;
+
+        case "registerUser":
+            $authController = new AuthController();
+            $authController->registerUser();
+            break;
+
+        default:
+            throw new Exception("Page non trouvée.");
+            break;
     }
+} catch (ValidationException $e) {
+    // Erreurs de validation utilisateur
+    echo "Erreur de validation : " . $e->getMessage();
 } catch (Exception $e) {
     echo $e->getMessage();
 }

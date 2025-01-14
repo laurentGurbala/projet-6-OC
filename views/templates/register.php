@@ -25,12 +25,19 @@
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button class="btn btn-primary btn-large" type="submit">S'inscrire</button>
+
+            <?php if (!empty($error)): ?>
+                <div class="error-message">
+                    <?= htmlspecialchars($error) ?>
+                </div>
+            <?php endif; ?>
+
+            <button class="btn btn-primary" type="submit">S'inscrire</button>
         </form>
 
         <!-- Déjà inscrit -->
         <div class="link">
-            <p>Déjà inscrit ? <a href="#">Connectez-vous</a></p>
+            <p>Déjà inscrit ? <a href="index.php?action=connection">Connectez-vous</a></p>
         </div>
     </div>
     <div class="image-container" aria-hidden="true"></div>
