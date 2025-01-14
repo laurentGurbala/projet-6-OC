@@ -1,6 +1,7 @@
 header {
     display: flex;
-    padding: 15px clamp(20px, 5vw, 150px);
+    padding: 15px 0px;
+    padding-left: 150px;
     font-size: 14px;
 }
 
@@ -30,6 +31,7 @@ header {
 }
 
 .user-actions {
+    border: 1px solid blueviolet;
     flex: 1;
     display: flex;
     align-items: center;
@@ -37,8 +39,15 @@ header {
     gap: 48px;
 }
 
+@media (max-width: 1024px) {
+    header {
+        padding-left: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     header {
+        padding: 15px 20px;
         flex-direction: column;
     }
 
