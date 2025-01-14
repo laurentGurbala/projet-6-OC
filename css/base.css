@@ -17,10 +17,10 @@ li {
 }
 
 h1 {
-    font-family: var(--font-family-secondary);
+    font-family: var(--font-family-title-desktop);
     font-weight: var(--font-weight-primary);
     color: var(--color-font-secondary);
-    font-size: var(--font-size-secondary);
+    font-size: var(--font-size-title-desktop);
 }
 
 label {
@@ -57,4 +57,10 @@ label {
 
 .btn:hover {
     background: var(--bg-btn-hover);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: var(--font-size-title-mobile);
+    }
 }
