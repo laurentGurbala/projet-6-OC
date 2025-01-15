@@ -26,6 +26,10 @@ try {
             $authController->registerUser();
             break;
 
+        case "connection":
+            $authController = new AuthController();
+            $authController->showConnection();
+            break;
         default:
             throw new Exception("Page non trouvée.");
             break;

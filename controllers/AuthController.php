@@ -19,6 +19,12 @@ class AuthController
         $view->render("register");
     }
 
+    public function showConnection(): void
+    {
+        $view = new View("Connexion");
+        $view->render("connection");
+    }
+
     public function registerUser(): void
     {
         try {
