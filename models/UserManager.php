@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Classe UserManager
+ *
+ * Gère les opérations relatives à l'entité `User`, telles que l'inscription,
+ * la vérification d'existence d'un email, et la récupération d'un utilisateur
+ * par son email.
+ */
 class UserManager extends AbstractEntityManager
 {
     /**
@@ -32,6 +39,12 @@ class UserManager extends AbstractEntityManager
         return isset($result["count"]) && $result["count"] > 0;
     }
 
+    /**
+     * Récupère un utilisateur par son adresse email.
+     * 
+     * @param string $email L'adresse email de l'utilisateur.
+     * @return User|null L'utilisateur correspondant ou null s'il n'existe pas.
+     */
     public function getUserByEmail(string $email): ?User
     {
         $sql = "SELECT * FROM user where email = :email";
