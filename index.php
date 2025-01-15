@@ -30,6 +30,12 @@ try {
             $authController = new AuthController();
             $authController->showConnection();
             break;
+
+        case "loginUser":
+            $authController = new AuthController();
+            $authController->loginUser();
+            break;
+
         default:
             throw new Exception("Page non trouvée.");
             break;

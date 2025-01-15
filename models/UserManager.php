@@ -31,4 +31,25 @@ class UserManager extends AbstractEntityManager
         $result = $query->fetch();
         return isset($result["count"]) && $result["count"] > 0;
     }
+
+    public function getUserByEmail(string $email): ?User
+    {
+        $sql = "SELECT * FROM user where email = :email";
+        $query = $this->db->query($sql, ["email" => $email]);
+        $result = $query->fetch();
+
+        // Si aucun utilisateur n'est trouvé
+        if (!$result) {
+            return null;
+        }
+
+        // Création d'une instance User
+        $user = new User();
+        $user->setId($result['id']);
+        $user->setLogin($result['login']);
+        $user->setEmail($result['email']);
+        $user->setPassword($result['password']);
+
+        return $user;
+    }
 }

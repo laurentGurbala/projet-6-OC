@@ -69,4 +69,29 @@ class AuthController
             $view->render("register", ["error" => $e->getMessage()]);
         }
     }
+
+    public function loginUser(): void
+    {
+        try {
+            $email = Utils::request("email");
+            $password = Utils::request("password");
+
+            $userManager = new UserManager();
+            $user = $userManager->getUserByEmail($email);
+
+            if (!$user || !password_verify($password, $user->getPassword())) {
+                throw new ValidationException("Email ou mot de passe incorrect.");
+            }
+
+            // Crée la session utilisateur
+            $_SESSION["user"] = $user->getId();
+
+            // Redirection après connexion
+            Utils::redirect("home");
+        } catch (ValidationException $e) {
+            // Rechargement de la page avec un message d'erreur
+            $view = new View("Connexion");
+            $view->render("connection", ["error" => $e->getMessage()]);
+        }
+    }
 }
