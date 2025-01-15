@@ -27,7 +27,7 @@
             </div>
 
             <?php if (!empty($error)): ?>
-                <div class="error-message">
+                <div class="error-message" role="alert">
                     <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>
