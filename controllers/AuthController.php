@@ -3,8 +3,8 @@
 /**
  * Classe AuthController
  *
- * Gère les actions liées à l'authentification, telles que l'inscription
- * et la connexion des utilisateurs.
+ * Gère les actions liées à l'authentification, telles que
+ * l'inscription, la connexion, et l'affichage des formulaires associés.
  */
 class AuthController
 {
@@ -19,6 +19,23 @@ class AuthController
         $view->render("register");
     }
 
+    /**
+     * Affiche la vue de connexion.
+     *
+     * @return void
+     */
+    public function showConnection(): void
+    {
+        $view = new View("Connexion");
+        $view->render("connection");
+    }
+
+    /**
+     * Gère l'inscription d'un nouvel utilisateur.
+     *
+     * @return void
+     * @throws ValidationException Si les données sont invalides ou si l'email est déjà utilisé.
+     */
     public function registerUser(): void
     {
         try {
@@ -61,6 +78,38 @@ class AuthController
             // Gestion spécifique pour les erreurs de validation
             $view = new View("Inscription");
             $view->render("register", ["error" => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Gère la connexion d'un utilisateur existant.
+     *
+     * @return void
+     * @throws ValidationException Si les identifiants sont incorrects.
+     */
+    public function loginUser(): void
+    {
+        try {
+            $email = Utils::request("email");
+            $password = Utils::request("password");
+
+            $userManager = new UserManager();
+            $user = $userManager->getUserByEmail($email);
+
+            // Validation des identifiants
+            if (!$user || !password_verify($password, $user->getPassword())) {
+                throw new ValidationException("Email ou mot de passe incorrect.");
+            }
+
+            // Création la session utilisateur
+            $_SESSION["user"] = $user->getId();
+
+            // Redirection après connexion
+            Utils::redirect("home");
+        } catch (ValidationException $e) {
+            // Rechargement de la page avec un message d'erreur
+            $view = new View("Connexion");
+            $view->render("connection", ["error" => $e->getMessage()]);
         }
     }
 }

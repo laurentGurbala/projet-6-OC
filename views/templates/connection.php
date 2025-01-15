@@ -1,25 +1,21 @@
 <?php
 
 /**
- * Affiche la page d'inscription
+ * Affiche la page de connection
  */
 
 ?>
 
 <div class="container">
     <div class="form-container">
-        <h1>Inscription</h1>
-        <form action="index.php?action=registerUser" method="post">
-            <!-- Pseudo -->
-            <div class="form-group">
-                <label for="login">Pseudo</label>
-                <input type="text" id="login" name="login" required>
-            </div>
+        <h1>Connexion</h1>
+        <form action="index.php?action=loginUser" method="post">
             <!-- Email -->
             <div class="form-group">
                 <label for="email">Adresse email</label>
                 <input type="email" id="email" name="email" required>
             </div>
+
             <!-- Mot de passe -->
             <div class="form-group">
                 <label for="password">Mot de passe</label>
@@ -35,10 +31,12 @@
             <button class="btn btn-primary" type="submit">S'inscrire</button>
         </form>
 
-        <!-- Déjà inscrit -->
+        <!-- Pas de compte -->
         <div class="link">
-            <p>Déjà inscrit ? <a href="index.php?action=connection">Connectez-vous</a></p>
+            <p>Pas de compte ? <a href="index.php?action=register">Inscrivez-vous</a></p>
         </div>
     </div>
+
+    <!-- Image (décorative) -->
     <div class="image-container" aria-hidden="true"></div>
 </div>
