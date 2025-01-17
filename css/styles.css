@@ -7,6 +7,7 @@
 @import "./header.css";
 @import "./footer.css";
 @import "./register.css";
+@import "./homepage.css";
 @import "./utilities.css";
 
 /* Variables */
@@ -24,11 +25,9 @@
     --color-font-tertiaire: #a6a6a6;
     --color-font-danger: #ac0000;
 
-    --font-family-primary: "Inter", serif;
-    --font-weight-primary: 400;
-    --font-size-primary: 14px;
+    --font-family-text: "Inter", serif;
+    --font-family-title: "Playfair", serif;
 
-    --font-family-title-desktop: "Playfair", serif;
-    --font-size-title-desktop: 36px;
-    --font-size-title-mobile: 30px;
+    --font-weight-primary: 400;
+    --font-weight-secondary: 300;
 }

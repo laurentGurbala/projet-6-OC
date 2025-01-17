@@ -16,11 +16,11 @@ li {
     list-style-type: none;
 }
 
-h1 {
-    font-family: var(--font-family-title-desktop);
+p {
+    font-family: var(--font-family-text);
+    color: var(--font-color-primary);
+    font-size: 1em;
     font-weight: var(--font-weight-primary);
-    color: var(--color-font-secondary);
-    font-size: var(--font-size-title-desktop);
 }
 
 label {
@@ -33,15 +33,37 @@ label {
 
 .main-container {
     width: 100%;
-    max-width: 1440px;
-    min-width: 320px;
+    max-width: 90rem;
+    min-width: 20rem;
+}
+
+.title-primary,
+.title-secondary {
+    font-family: var(--font-family-title);
+    font-weight: var(--font-weight-primary);
+    font-size: 2.25rem;
+    line-height: 1.35;
+    color: var(--color-font-secondary);
+}
+
+.title-secondary {
+    font-size: 2rem;
+    color: var(--font-color-primary);
+}
+
+.text-mark {
+    color: var(--color-font-tertiaire);
+    font-family: var(--font-family-text);
+    font-weight: var(--font-weight-primary);
+    line-height: 1.2;
+    font-style: italic;
 }
 
 .btn {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
-    padding: 22px 38px;
-    border-radius: 10px;
+    padding: 1.375rem 2.375rem;
+    border-radius: 0.625rem;
     color: white;
     cursor: pointer;
     border: none;
@@ -53,14 +75,45 @@ label {
 
 .btn-alt {
     background: var(--bg-btn-alt);
+    color: var(--bg-btn-primary);
+    border: 1px solid var(--bg-btn-primary);
 }
 
 .btn:hover {
     background: var(--bg-btn-hover);
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: var(--font-size-title-mobile);
-    }
+.btn-alt:hover {
+    color: white;
+}
+
+
+.card-book {
+    background: var(--color-bg-white);
+}
+
+.card-book-img {
+    width: 200px;
+    height: 200px;
+}
+
+.card-book-details {
+    padding: 1.25rem 0.875rem;
+}
+
+.car-book-title {
+    font-size: 1rem;
+    font-weight: var(--font-weight-primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-book-author {
+    font-size: 0.875rem;
+    color: var(--color-font-tertiaire);
+    margin-bottom: 1.375rem;
+}
+
+.card-book-pseudo {
+    font-size: 0.625rem;
+    margin-bottom: 3px;
 }

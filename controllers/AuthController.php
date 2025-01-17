@@ -102,7 +102,7 @@ class AuthController
             }
 
             // Création la session utilisateur
-            $_SESSION["user"] = $user->getId();
+            $_SESSION["user_id"] = $user->getId();
 
             // Redirection après connexion
             Utils::redirect("home");
