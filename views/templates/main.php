@@ -31,14 +31,14 @@
                 <!-- Navigation principal -->
                 <div class="main-menu">
                     <!-- Logo -->
-                    <a href="/" class="logo" aria-label="Retour à l'acceuil">
+                    <a href="index.php" class="logo" aria-label="Retour à l'acceuil">
                         <img src="images/logos/logo_tom_troc.png" alt="Tom Troc">
                     </a>
 
                     <!-- Navigation desktop -->
                     <nav class="desktop-menu" aria-label="Menu principal">
                         <ul>
-                            <li><a class="link" href="#">Accueil</a></li>
+                            <li><a class="link" href="index.php">Accueil</a></li>
                             <li><a class="link" href="#">Nos livres à l'échange</a></li>
                         </ul>
                     </nav>
@@ -51,7 +51,7 @@
                 <!-- Navigation mobile -->
                 <nav class="mobile-menu">
                     <ul>
-                        <li><a class="link" href="#">Accueil</a></li>
+                        <li><a class="link" href="index.php">Accueil</a></li>
                         <li><a class="link" href="#">Nos livres à l'échange</a></li>
                     </ul>
                 </nav>
@@ -59,7 +59,7 @@
             <div class="user-actions">
                 <a class="link" href="#" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
                 <a class="link" href="#" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a class="link" href="#" aria-label="Se connecter">Connexion</a>
+                <a class="link" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
             </div>
         </header>
 
@@ -75,7 +75,7 @@
                 </ul>
             </nav>
             <p>Tom Troc©</p>
-            <a href="/" class="footer-logo" aria-label="Retour à l'acceuil">
+            <a href="index.php" class="footer-logo" aria-label="Retour à l'acceuil">
                 <img src="images/logos/logo_tom_troc_simple.png" alt="Tom Troc">
             </a>
         </footer>
