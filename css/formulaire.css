@@ -8,7 +8,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 130px 150px;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container h1 {
@@ -48,26 +49,20 @@ input[type="password"] {
 }
 
 .image-container {
-    width: 720px;
+    flex: 1;
+    max-width: 720px;
     height: 886px;
     background-image: url("../images/photos/bibliotheque.png");
     background-size: cover;
     background-position: center;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .container {
         flex-direction: column;
         align-items: center;
     }
 
-    .image-container {
-        width: 100%;
-
-    }
-}
-
-@media (max-width: 768px) {
     .form-container {
         padding: 78px 20px 100px;
     }
@@ -81,6 +76,7 @@ input[type="password"] {
     }
 
     .image-container {
+        width: 100%;
         background-size: contain;
         height: 462px;
     }
