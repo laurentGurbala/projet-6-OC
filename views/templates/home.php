@@ -7,6 +7,7 @@
 ?>
 <!-- Bannière -->
 <div class="banner">
+    <!-- Section principale -->
     <section class="banner-section">
         <h1 class="title-primary">Rejoignez nos lecteurs passionnés</h1>
         <p class="banner-detail">
@@ -16,6 +17,7 @@
         <a href="#" class="btn btn-primary">Découvrir</a>
     </section>
 
+    <!-- Section image -->
     <div class="banner-image">
         <img src="./images/photos/homepage_1.jpg" alt="Un vieil homme assis entrain de lire au milieu de son exposition de livre.">
         <p class="text-mark">Hamza</p>
@@ -81,7 +83,7 @@
     <div class="fonctionnement-list">
         <!-- step 1 -->
         <div class="fonctionnement-step">
-            <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
+            <p>Inscrivez-vous gratuitement sur<br> notre plateforme.</p>
         </div>
 
         <!-- step 2 -->

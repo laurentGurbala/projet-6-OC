@@ -87,13 +87,12 @@ label {
     color: white;
 }
 
-
 .card-book {
     background: var(--color-bg-white);
+    width: 12.5rem;
 }
 
 .card-book-img {
-    width: 200px;
     height: 200px;
 }
 
@@ -101,9 +100,10 @@ label {
     padding: 1.25rem 0.875rem;
 }
 
-.car-book-title {
+.card-book-title {
     font-size: 1rem;
     font-weight: var(--font-weight-primary);
+    color: var(--color-font-secondary);
     margin-bottom: 0.5rem;
 }
 
@@ -116,4 +116,46 @@ label {
 .card-book-pseudo {
     font-size: 0.625rem;
     margin-bottom: 3px;
+}
+
+@media (max-width: 768px) {
+    .title-primary {
+        font-size: 1.875rem;
+    }
+
+    .title-secondary {
+        font-size: 1.75rem;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-book {
+        width: 10rem;
+    }
+
+    .card-book-img {
+        height: 160px;
+    }
+
+    .card-book-details {
+        padding: 1rem 0.75rem 1.125rem;
+    }
+
+    .card-book-title {
+        font-size: 0.8125rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .card-book-author {
+        font-size: 0.7rem;
+        margin-bottom: 1.125rem;
+    }
+
+    .card-book-pseudo {
+        font-size: 0.5rem;
+    }
 }
