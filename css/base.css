@@ -31,6 +31,10 @@ label {
     margin-bottom: 10px;
 }
 
+.link {
+    padding: 1rem 0.25rem;
+}
+
 .main-container {
     width: 100%;
     max-width: 90rem;
@@ -119,6 +123,12 @@ label {
 }
 
 @media (max-width: 768px) {
+    .link {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
     .title-primary {
         font-size: 1.875rem;
     }
