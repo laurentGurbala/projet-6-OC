@@ -3,32 +3,32 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 40px;
-    padding: 23px;
-    font-size: 12px;
+    gap: 2.5rem;
+    padding: 1.5rem;
+    font-size: 0.75rem;
 }
 
 .footer-logo {
     display: block;
     width: 22px;
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 
 .footer-menu {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 2.5rem;
 }
 
 @media (max-width: 768px) {
     footer {
         flex-direction: column;
-        gap: 20px;
-        padding: 31px;
+        gap: 1.25rem;
+        padding: 2rem;
     }
 
     .footer-menu {
         flex-direction: column;
-        gap: 20px;
+        gap: 1.25rem;
     }
 }
