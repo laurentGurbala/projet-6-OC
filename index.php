@@ -9,9 +9,6 @@ $action = Utils::request("action", "home");
 try {
     switch ($action) {
         case "home":
-            // Vérifie si l'utilisateur est connecté
-            Utils::checkIfUserIsConnected();
-
             // Affiche la page home
             $homeController = new HomeController();
             $homeController->showHome();
