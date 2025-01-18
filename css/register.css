@@ -50,7 +50,7 @@ input[type="password"] {
 .image-container {
     width: 720px;
     height: 886px;
-    background-image: url("../images/png/bibliotheque.png");
+    background-image: url("../images/photos/bibliotheque.png");
     background-size: cover;
     background-position: center;
 }

@@ -49,7 +49,7 @@ class Utils
     /**
      * Vérifie si l'utilisateur est connecté.
      *
-     * Cette méthode vérifie la présence d'une session utilisateur (`$_SESSION["user"]`).
+     * Cette méthode vérifie la présence d'une session utilisateur (`$_SESSION["user_id"]`).
      * Si l'utilisateur n'est pas connecté, il est redirigé vers la page de connexion.
      * 
      * @return void
@@ -57,7 +57,7 @@ class Utils
     public static function checkIfUserIsConnected(): void
     {
         // Vérifie si la session utilisateur est active
-        if (!isset($_SESSION["user"])) {
+        if (!isset($_SESSION["user_id"])) {
             // Redirige l'utilisateur vers la page de connexion
             Utils::redirect("register");
         }
