@@ -38,8 +38,8 @@
                     <!-- Navigation desktop -->
                     <nav class="desktop-menu" aria-label="Menu principal">
                         <ul>
-                            <li><a href="#">Accueil</a></li>
-                            <li><a href="#">Nos livres à l'échange</a></li>
+                            <li><a class="link" href="#">Accueil</a></li>
+                            <li><a class="link" href="#">Nos livres à l'échange</a></li>
                         </ul>
                     </nav>
                     <!-- Icon hamburger -->
@@ -51,15 +51,15 @@
                 <!-- Navigation mobile -->
                 <nav class="mobile-menu">
                     <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Nos livres à l'échange</a></li>
+                        <li><a class="link" href="#">Accueil</a></li>
+                        <li><a class="link" href="#">Nos livres à l'échange</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="user-actions">
-                <a href="#" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
-                <a href="#" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a href="#" aria-label="Se connecter">Connexion</a>
+                <a class="link" href="#" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
+                <a class="link" href="#" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
+                <a class="link" href="#" aria-label="Se connecter">Connexion</a>
             </div>
         </header>
 
@@ -70,8 +70,8 @@
         <footer>
             <nav aria-label="Liens du bas de page">
                 <ul class="footer-menu">
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Mentions légales</a></li>
+                    <li><a class="link" href="#">Politique de confidentialité</a></li>
+                    <li><a class="link" href="#">Mentions légales</a></li>
                 </ul>
             </nav>
             <p>Tom Troc©</p>

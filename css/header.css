@@ -1,8 +1,7 @@
 header {
     display: flex;
-    padding: 15px 0px;
-    padding-left: 150px;
-    font-size: 14px;
+    padding: 1rem 0px;
+    font-size: 0.875rem;
 }
 
 .header-container {
@@ -11,7 +10,7 @@ header {
 
 .main-menu {
     display: flex;
-    gap: 78px;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -27,7 +26,7 @@ header {
 .desktop-menu ul {
     display: flex;
     align-items: center;
-    gap: 44px;
+    gap: 2.75rem;
 }
 
 .user-actions {
@@ -35,18 +34,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 48px;
-}
-
-@media (max-width: 1024px) {
-    header {
-        padding-left: 30px;
-    }
+    gap: 3rem;
 }
 
 @media (max-width: 768px) {
     header {
-        padding: 15px 20px;
+        padding: 1rem 1.25rem;
         flex-direction: column;
     }
 
@@ -62,12 +55,17 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-        margin-bottom: 15px;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-menu li {
+        display: block;
+        width: 100%;
     }
 
     .user-actions {
         flex-direction: column;
-        gap: 15px;
+        gap: 1rem;
     }
 }
