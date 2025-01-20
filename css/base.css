@@ -23,14 +23,6 @@ p {
     font-weight: var(--font-weight-primary);
 }
 
-label {
-    font-family: var(--font-family-primary);
-    font-weight: var(--font-weight-primary);
-    color: var(--color-font-tertiaire);
-    font-size: var(--font-size-primary);
-    margin-bottom: 10px;
-}
-
 .link {
     padding: 1rem 0.25rem;
 }
@@ -121,6 +113,45 @@ label {
     font-size: 0.625rem;
     margin-bottom: 3px;
 }
+
+.separator {
+    width: 15.125rem;
+    height: 1px;
+    background: var(--color-bg-primary);
+    margin: 3rem 0;
+}
+
+.flag {
+    padding: 0.2rem 0.8rem;
+    font-size: 0.5rem;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
+.flag-dispo {
+    background: #6DC5A1;
+    color: white;
+}
+
+.flag-no-dispo {
+    background: #C56D6D;
+    color: white;
+}
+
+.edit {
+    text-decoration: underline;
+    color: var(--color-font-primary);
+}
+
+.supr {
+    text-decoration: underline;
+    color: #CB2D2D;
+}
+
+.italic {
+    font-style: italic;
+}
+
 
 @media (max-width: 768px) {
     .link {

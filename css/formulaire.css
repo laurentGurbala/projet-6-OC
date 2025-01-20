@@ -30,6 +30,15 @@
     flex-direction: column;
 }
 
+
+label {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-primary);
+    color: var(--color-font-tertiaire);
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -38,6 +47,7 @@ input[type="password"] {
     border: 1px solid #f0f0f0;
     border-radius: 6px;
     margin-bottom: 32px;
+    padding: 1rem 0.9rem;
 }
 
 .link {

@@ -1,0 +1,138 @@
+.account-container {
+    padding: 5.625rem 9.375rem;
+}
+
+.account-container .title-primary {
+    font-size: 1.625rem;
+    margin-bottom: 3rem;
+}
+
+.account-flex {
+    display: flex;
+    gap: 2rem;
+}
+
+.profil,
+.infos {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 31.75rem;
+    margin-bottom: 2rem;
+}
+
+.profil-image {
+    border-radius: 50%;
+    width: 135px;
+    height: 135px;
+    margin-bottom: 3px;
+}
+
+.profil-modify {
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--color-font-tertiaire);
+    text-decoration: underline;
+}
+
+.profil-name {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.7rem;
+}
+
+.profil-date {
+    font-size: 0.875rem;
+    color: var(--color-font-tertiaire);
+    margin-bottom: 1.3rem;
+}
+
+.profil-library {
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.profil-nb-book {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    margin-bottom: 4rem;
+}
+
+.infos-title {
+    margin-bottom: 1.25rem;
+}
+
+.infos-form input {
+    background: #EDF2F6;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: 140px 155px 180px 222px 180px auto;
+    background-color: #ccc;
+    letter-spacing: 0.1rem;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.table-header,
+.table-row {
+    display: contents;
+}
+
+.table-row:nth-child(even) .cell {
+    background-color: white;
+}
+
+.table-row:nth-child(odd) .cell {
+    background-color: #EDF2F6;
+}
+
+.table-header {
+    text-transform: uppercase;
+    font-family: var(--font-family-text);
+    font-weight: 600;
+    font-size: 0.5rem;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+}
+
+.cell p,
+.cell .edit,
+.cell .supr {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+}
+
+.action-cell {
+    display: flex;
+    gap: 28px;
+}
+
+.table-header .cell,
+.table-row .cell {
+    padding: 1.6rem 0;
+    padding-left: 3.5rem;
+}
+
+.table-header .cell {
+    font-weight: bold;
+    background-color: white;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-bg-primary);
+}

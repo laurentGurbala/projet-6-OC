@@ -38,6 +38,12 @@ try {
             $authController->loginUser();
             break;
 
+        case "account":
+            // Affiche la page mon compte d'un utilisateur
+            Utils::checkIfUserIsConnected();
+            $view = new View("compte");
+            $view->render("account");
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
