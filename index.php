@@ -41,8 +41,8 @@ try {
         case "account":
             // Affiche la page mon compte d'un utilisateur
             Utils::checkIfUserIsConnected();
-            $view = new View("compte");
-            $view->render("account");
+            $accountController = new AccountController();
+            $accountController->showAccount();
             break;
 
         case "updateAccount":

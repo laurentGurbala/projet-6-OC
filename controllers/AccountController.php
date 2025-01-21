@@ -2,6 +2,22 @@
 
 class AccountController
 {
+    public function showAccount(): void
+    {
+        // Récupération de l'utilisateur connecté
+        $userId = $_SESSION["user_id"];
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($userId);
+
+        if (!$user) {
+            throw new Exception("Utilisateur introuvable.");
+        }
+
+        // Affiche la vue avec les données utilisateur
+        $view = new View("Mon compte");
+        $view->render("account", ["user" => $user]);
+    }
+
     public function updateAccount(): void
     {
         try {

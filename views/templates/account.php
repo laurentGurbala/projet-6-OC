@@ -27,22 +27,22 @@
 
                 <!-- formulaire -->
                 <form class="infos-form" action="index.php?action=updateAccount" method="POST">
-                    <!-- Pseudo -->
+                    <!-- Email -->
                     <div class="form-group">
                         <label for="email">Adresse email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" required>
                     </div>
 
                     <!-- Mot de passe -->
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" placeholder="Laisser vide pour ne pas changer" required>
                     </div>
 
                     <!-- Pseudo -->
                     <div class="form-group">
                         <label for="login">Pseudo</label>
-                        <input type="text" id="login" name="login" required>
+                        <input type="text" id="login" name="login" value="<?= htmlspecialchars($user->getLogin()) ?>" required>
                     </div>
 
                     <!-- button -->
