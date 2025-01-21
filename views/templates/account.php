@@ -36,7 +36,7 @@
                     <!-- Mot de passe -->
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" placeholder="Laisser vide pour ne pas changer" required>
+                        <input type="password" id="password" name="password" placeholder="Laisser vide pour ne pas changer">
                     </div>
 
                     <!-- Pseudo -->
