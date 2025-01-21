@@ -116,14 +116,15 @@ p {
 
 .separator {
     width: 15.125rem;
-    height: 1px;
+    height: 2px;
     background: var(--color-bg-primary);
     margin: 3rem 0;
 }
 
 .flag {
+    width: fit-content;
     padding: 0.2rem 0.8rem;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     font-weight: 500;
     border-radius: 30px;
 }

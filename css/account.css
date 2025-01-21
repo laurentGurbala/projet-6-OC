@@ -25,11 +25,15 @@
     margin-bottom: 2rem;
 }
 
+.profil {
+    padding: 0 2.5rem;
+}
+
 .profil-image {
     border-radius: 50%;
     width: 135px;
     height: 135px;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .profil-modify {
@@ -64,6 +68,19 @@
     gap: 4px;
     font-size: 0.875rem;
     margin-bottom: 4rem;
+}
+
+.infos {
+    padding: 2.5rem 2rem;
+}
+
+.infos-container {
+    width: 100%;
+    max-width: 322px;
+}
+
+.infos-form {
+    width: 100%;
 }
 
 .infos-title {
@@ -135,4 +152,107 @@
     padding-top: 2rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-bg-primary);
+}
+
+.list-book {
+    display: none;
+}
+
+.card-list {
+    background: white;
+    border-radius: 20px;
+    padding: 3.25rem;
+    width: 20rem;
+}
+
+.card-list-header {
+    display: flex;
+    gap: 1.1rem;
+}
+
+.card-list img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.card-list-infos {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.3rem;
+}
+
+.card-list-title {
+    font-size: 0.875rem;
+}
+
+.card-list-author {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.card-list-details {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 0.875rem;
+    height: 62px;
+    width: 220px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+    margin-bottom: 2.6rem;
+}
+
+.card-list-actions {
+    display: flex;
+    gap: 2.6rem;
+}
+
+@media (max-width: 1390px) {
+    .table {
+        display: none;
+    }
+
+    .list-book {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 950px) {
+    .account-flex {
+        flex-direction: column;
+    }
+
+    .profil {
+        padding-top: 2.5rem;
+    }
+
+    .profil-nb-book {
+        margin-bottom: 2rem;
+    }
+
+    .infos {
+        padding: 2.5rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .account-container {
+        padding: 4rem 1.25rem 3.875rem;
+    }
+
+    .account-container .title-primary {
+        font-size: 1.875rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .list-book {
+        flex-direction: column;
+    }
 }

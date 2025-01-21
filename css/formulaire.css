@@ -17,7 +17,8 @@
 }
 
 .form-container form {
-    width: 322px;
+    width: 100%;
+    max-width: 322px;
 }
 
 .form-container .btn {

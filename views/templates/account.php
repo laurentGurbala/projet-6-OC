@@ -21,7 +21,7 @@
 
         <!-- infos perso -->
         <div class="infos">
-            <div>
+            <div class="infos-container">
                 <!-- titre -->
                 <p class="infos-title">Vos informations personnelles</p>
 
@@ -52,6 +52,7 @@
         </div>
     </div>
 
+    <!-- Liste de livre en tableau -->
     <div class="table">
         <div class="table-header">
             <div class="cell">
@@ -148,6 +149,94 @@
                 <p class="flag flag-no-dispo">non dispo.</p>
             </div>
             <div class="cell action-cell">
+                <a class="edit" href="#">Éditer</a>
+                <a class="supr" href="#">Supprimer</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liste de livre en card -->
+    <div class="list-book">
+        <!-- card -->
+        <div class="card-list">
+            <!-- En-tête de la card -->
+            <div class="card-list-header">
+                <img src="./images/photos/checker.png" alt="Photo courverture">
+                <div class="card-list-infos">
+                    <p class="card-list-title">Titre du livre</p>
+                    <p class="card-list-author">Auteur du livre</p>
+                    <p class="flag flag-dispo">disponible</p>
+                </div>
+            </div>
+            <!-- Description de la card -->
+            <p class="card-list-details">
+                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
+            </p>
+            <!-- Action de la card -->
+            <div class="card-list-actions">
+                <a class="edit" href="#">Éditer</a>
+                <a class="supr" href="#">Supprimer</a>
+            </div>
+        </div>
+
+        <div class="card-list">
+            <!-- En-tête de la card -->
+            <div class="card-list-header">
+                <img src="./images/photos/checker.png" alt="Photo courverture">
+                <div class="card-list-infos">
+                    <p class="card-list-title">Titre du livre</p>
+                    <p class="card-list-author">Auteur du livre</p>
+                    <p class="flag flag-dispo">disponible</p>
+                </div>
+            </div>
+            <!-- Description de la card -->
+            <p class="card-list-details">
+                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
+            </p>
+            <!-- Action de la card -->
+            <div class="card-list-actions">
+                <a class="edit" href="#">Éditer</a>
+                <a class="supr" href="#">Supprimer</a>
+            </div>
+        </div>
+
+        <div class="card-list">
+            <!-- En-tête de la card -->
+            <div class="card-list-header">
+                <img src="./images/photos/checker.png" alt="Photo courverture">
+                <div class="card-list-infos">
+                    <p class="card-list-title">Titre du livre</p>
+                    <p class="card-list-author">Auteur du livre</p>
+                    <p class="flag flag-dispo">disponible</p>
+                </div>
+            </div>
+            <!-- Description de la card -->
+            <p class="card-list-details">
+                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
+            </p>
+            <!-- Action de la card -->
+            <div class="card-list-actions">
+                <a class="edit" href="#">Éditer</a>
+                <a class="supr" href="#">Supprimer</a>
+            </div>
+        </div>
+
+        <div class="card-list">
+            <!-- En-tête de la card -->
+            <div class="card-list-header">
+                <img src="./images/photos/checker.png" alt="Photo courverture">
+                <div class="card-list-infos">
+                    <p class="card-list-title">Titre du livre</p>
+                    <p class="card-list-author">Auteur du livre</p>
+                    <p class="flag flag-dispo">disponible</p>
+                </div>
+            </div>
+            <!-- Description de la card -->
+            <p class="card-list-details">
+                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
+            </p>
+            <!-- Action de la card -->
+            <div class="card-list-actions">
                 <a class="edit" href="#">Éditer</a>
                 <a class="supr" href="#">Supprimer</a>
             </div>
