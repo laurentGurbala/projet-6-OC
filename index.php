@@ -44,6 +44,13 @@ try {
             $view = new View("compte");
             $view->render("account");
             break;
+
+        case "updateAccount":
+            // Gère la modification de l'utilisateur
+            Utils::checkIfUserIsConnected();
+            $accountController = new AccountController();
+            $accountController->updateAccount();
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");

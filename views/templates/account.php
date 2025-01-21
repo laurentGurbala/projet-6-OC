@@ -26,7 +26,7 @@
                 <p class="infos-title">Vos informations personnelles</p>
 
                 <!-- formulaire -->
-                <form class="infos-form" action="#" method="POST">
+                <form class="infos-form" action="index.php?action=updateAccount" method="POST">
                     <!-- Pseudo -->
                     <div class="form-group">
                         <label for="email">Adresse email</label>
