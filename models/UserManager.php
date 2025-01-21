@@ -62,6 +62,7 @@ class UserManager extends AbstractEntityManager
         $user->setLogin($result['login']);
         $user->setEmail($result['email']);
         $user->setPassword($result['password']);
+        $user->setCreatedAt(new DateTime($result["created_at"]));
 
         return $user;
     }
@@ -93,6 +94,7 @@ class UserManager extends AbstractEntityManager
             $user->setLogin($result["login"]);
             $user->setEmail($result["email"]);
             $user->setPassword($result["password"]);
+            $user->setCreatedAt(new DateTime($result["created_at"]));
             return $user;
         }
 

@@ -24,6 +24,8 @@ class User extends AbstractEntity
      */
     private string $password;
 
+    private DateTime $createdAt;
+
     /**
      * Définit le login de l'utilisateur.
      *
@@ -86,5 +88,15 @@ class User extends AbstractEntity
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function setCreatedAt(DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }

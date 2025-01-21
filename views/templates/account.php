@@ -1,3 +1,33 @@
+<?php
+
+/**
+ * Affiche la page mon compte
+ */
+
+function formatDuration(DateTime $date): string
+{
+    $now = new DateTime();
+    $interval = $now->diff($date);
+
+    $duration = "";
+
+    if ($interval->y > 0) {
+        $duration .= $interval->y . " ans ";
+    }
+
+    if ($interval->m > 0) {
+        $duration .= $interval->m . " mois ";
+    }
+
+    if ($interval->d > 0) {
+        $duration .= $interval->d . " jours";
+    }
+
+    return trim($duration);
+}
+
+?>
+
 <section class="account-container">
     <h1 class="title-primary">Mon compte</h1>
     <div class="account-flex">
@@ -9,8 +39,8 @@
             </div>
             <div class="separator"></div>
             <div class="profil-details">
-                <h2 class="title-secondary profil-name">nathalire</h2>
-                <p class="profil-date">Membre depuis 1 an</p>
+                <h2 class="title-secondary profil-name"><?= $user->getLogin() ?></h2>
+                <p class="profil-date">Membre depuis <?= formatDuration($user->getCreatedAt()) ?></p>
                 <p class="profil-library">BIBLIOTHEQUE</p>
                 <div class="profil-nb-book">
                     <img src="./images/svg/book.svg" alt="logo de 2 livres">
