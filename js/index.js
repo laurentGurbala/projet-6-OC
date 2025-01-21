@@ -1,5 +1,6 @@
 "use strict";
 
+// éléments pour le menu hamburger du header
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const userActionMenu = document.querySelector(".user-actions");
 const desktopMenu = document.querySelector(".desktop-menu");
@@ -10,8 +11,15 @@ const isOpen = "is-open";
 const closeIcon = '<i class="fa-solid fa-xmark"></i>';
 const hamburgerIcon = '<i class="fa-solid fa-bars"></i>';
 
+// éléments pour la fenêtre modale du changement d'image
+// dans le profil de l'utilisateur
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const modal = document.getElementById("uploadModal");
+
 // Fonctions
 
+// Fonction pour metter à jour l'affichage du header
 function updateMenuDisplay() {
     // Affichage desktop
     if (window.innerWidth > 769) {
@@ -35,6 +43,16 @@ function updateMenuDisplay() {
     }
 }
 
+// Fonction pour ouvrir la modale
+function openModal() {
+    modal.style.display = "block";    
+}
+
+// Fonction pour fermer la modale
+function closeModal() {
+    modal.style.display = "none";
+}
+
 // Events
 
 hamburgerMenu.addEventListener("click", () => {
@@ -50,6 +68,9 @@ hamburgerMenu.addEventListener("click", () => {
     mobileMenu.classList.toggle(isNone);
 
 })
+
+openModalBtn.addEventListener("click", openModal);
+closeModalBtn.addEventListener("click", closeModal);
 
 // Ecoute des changements de la taille de l'écran
 window.addEventListener("resize", updateMenuDisplay);

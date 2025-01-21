@@ -35,7 +35,7 @@ function formatDuration(DateTime $date): string
         <div class="profil">
             <div>
                 <img class="profil-image" src="./images/photos/checker.png" alt="Profil">
-                <p class="profil-modify">modifier</p>
+                <p class="profil-modify" id="openModalBtn">modifier</p>
             </div>
             <div class="separator"></div>
             <div class="profil-details">
@@ -274,3 +274,17 @@ function formatDuration(DateTime $date): string
     </div>
 
 </section>
+
+<div class="modal" id="uploadModal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <h2 class="modal-title">Changer votre image de profil</h2>
+        <form class="form-container" action="index.php?action=uploadProfileImage" method="POST" enctype="multipart/form-data">
+            <div class="">
+                <label for="profileImage">Choisissez une image :</label>
+                <input type="file" name="profileImage" id="profileImage" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</div>

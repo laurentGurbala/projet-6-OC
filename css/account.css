@@ -41,6 +41,7 @@
     text-align: center;
     color: var(--color-font-tertiaire);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .profil-name {
