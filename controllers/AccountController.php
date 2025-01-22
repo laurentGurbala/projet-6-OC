@@ -70,6 +70,9 @@ class AccountController
 
     public function uploadProfileImage(): void
     {
+        // Indique que la réponse sera en JSON
+        header('Content-Type: application/json');
+
         try {
             // Vérifie si le fichier a bien été uploadé
             if (isset($_FILES["profileImage"]) && $_FILES["profileImage"]["error"] === UPLOAD_ERR_OK) {
@@ -109,20 +112,21 @@ class AccountController
                 $uniqueFileName = uniqid("profile_", true) . "." . $fileExtension;
                 $destinationPath = $uploadDir . $uniqueFileName;
 
-                // Déplace le fichier vers le dossier final
-                if (move_uploaded_file($fileTmpPath, $destinationPath)) {
-                    // Todo save in the db
-                    echo "chargement réussi !";
-                } else {
+                // Erreur lors du déplacement du fichier
+                if (!move_uploaded_file($fileTmpPath, $destinationPath)) {
                     throw new FileException("Erreur lors de l'enregistrement du fichier");
                 }
+
+                // Répond avec succès
+                echo json_encode(["success" => true, "message" => "Fichier uploadé avec succès."]);
+                return;
             } else {
                 throw new FileException("Erreur lors de l'enregistrement du fichier");
             }
         } catch (FileException $e) {
-            echo $e->getMessage();
+            echo json_encode(["success" => false, "error" => $e->getMessage()]);
         } catch (Exception $e) {
-            echo "Erreur inattendue : " . $e->getMessage();
+            echo json_encode(["success" => false, "error" => "Erreur inattendue : " . $e->getMessage()]);
         }
     }
 }

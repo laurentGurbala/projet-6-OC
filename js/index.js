@@ -17,6 +17,9 @@ const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("uploadModal");
 
+const uploadProfileForm = document.getElementById("uploadProfileForm");
+const errorMessageUpload = document.getElementById("errorMessage");
+
 // Fonctions
 
 // Fonction pour metter à jour l'affichage du header
@@ -71,6 +74,33 @@ hamburgerMenu.addEventListener("click", () => {
 
 openModalBtn.addEventListener("click", openModal);
 closeModalBtn.addEventListener("click", closeModal);
+
+uploadProfileForm.addEventListener("submit", function (event) {
+    // Empêche la soumission du formulaire
+    event.preventDefault();
+
+    // Récupère les données du formulaire
+    const formData = new FormData(this);
+
+    // Envoie les données en AJAX
+    fetch("index.php?action=uploadProfileImage", {
+        method: "POST",
+        body: formData,
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            errorMessageUpload.textContent = data.error || "Une erreur est survenue.";
+        }
+    })
+    .catch(error => {
+        console.error("Erreur: ", error);
+    })
+})
 
 // Ecoute des changements de la taille de l'écran
 window.addEventListener("resize", updateMenuDisplay);
