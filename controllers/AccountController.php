@@ -14,9 +14,14 @@ class AccountController
         // Récupérer l'utilisateur
         $user = $this->getUser();
 
+        // Récupérer les livres de l'utilisateur
+        $userId = $_SESSION["user_id"];
+        $bookManager = new BookManager();
+        $books = $bookManager->getBooksByUserId($userId);
+
         // Affiche la vue avec les données utilisateur
         $view = new View("Mon compte");
-        $view->render("account", ["user" => $user]);
+        $view->render("account", ["user" => $user, "books" => $books]);
     }
 
     /**

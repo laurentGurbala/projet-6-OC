@@ -94,193 +94,79 @@ function getProfileImagePath(User $user): string
 
     <!-- Liste de livre en tableau -->
     <div class="table">
-        <div class="table-header">
-            <div class="cell">
-                <p>Photo</p>
+        <?php if (!empty($books)): ?>
+            <div class="table-header">
+                <div class="cell">
+                    <p>Photo</p>
+                </div>
+                <div class="cell">
+                    <p>Titre</p>
+                </div>
+                <div class="cell">
+                    <p>Auteur</p>
+                </div>
+                <div class="cell">
+                    <p>Description</p>
+                </div>
+                <div class="cell">
+                    <p>Disponibilité</p>
+                </div>
+                <div class="cell">
+                    <p>Action</p>
+                </div>
             </div>
-            <div class="cell">
-                <p>Titre</p>
-            </div>
-            <div class="cell">
-                <p>Auteur</p>
-            </div>
-            <div class="cell">
-                <p>Description</p>
-            </div>
-            <div class="cell">
-                <p>Disponibilité</p>
-            </div>
-            <div class="cell">
-                <p>Action</p>
-            </div>
-        </div>
-        <div class="table-row">
-            <div class="cell"><img src="./images/photos/checker.png" alt="Photo du livre"></div>
-            <div class="cell">
-                <p>auteur</p>
-            </div>
-            <div class="cell">
-                <p>titre du livre</p>
-            </div>
-            <div class="cell">
-                <p class="italic">J'ai récemment <br> plongé dans les pages <br> de 'The Kinfolk Table' <br> et j'ai été enchanté par</p>
-            </div>
-            <div class="cell">
-                <p class="flag flag-dispo">disponible</p>
-            </div>
-            <div class="cell action-cell">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
+        <?php endif; ?>
 
-        <div class="table-row">
-            <div class="cell"><img src="./images/photos/checker.png" alt="Photo du livre"></div>
-            <div class="cell">
-                <p>auteur</p>
+        <?php foreach ($books as $book) : ?>
+            <div class="table-row">
+                <div class="cell"><img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>"></div>
+                <div class="cell">
+                    <p><?= htmlspecialchars($book->getTitle()) ?></p>
+                </div>
+                <div class="cell">
+                    <p><?= htmlspecialchars($book->getAuthor()) ?></p>
+                </div>
+                <div class="cell">
+                    <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
+                </div>
+                <div class="cell">
+                    <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
+                        <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                    </p>
+                </div>
+                <div class="cell action-cell">
+                    <a class="edit" href="#">Éditer</a>
+                    <a class="supr" href="#">Supprimer</a>
+                </div>
             </div>
-            <div class="cell">
-                <p>titre du livre</p>
-            </div>
-            <div class="cell">
-                <p class="italic">J'ai récemment <br> plongé dans les pages <br> de 'The Kinfolk Table' <br> et j'ai été enchanté par</p>
-            </div>
-            <div class="cell">
-                <p class="flag flag-no-dispo">non dispo.</p>
-            </div>
-            <div class="cell action-cell">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
-
-        <div class="table-row">
-            <div class="cell"><img src="./images/photos/checker.png" alt="Photo du livre"></div>
-            <div class="cell">
-                <p>auteur</p>
-            </div>
-            <div class="cell">
-                <p>titre du livre</p>
-            </div>
-            <div class="cell">
-                <p class="italic">J'ai récemment <br> plongé dans les pages <br> de 'The Kinfolk Table' <br> et j'ai été enchanté par</p>
-            </div>
-            <div class="cell">
-                <p class="flag flag-no-dispo">non dispo.</p>
-            </div>
-            <div class="cell action-cell">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
-
-        <div class="table-row">
-            <div class="cell"><img src="./images/photos/checker.png" alt="Photo du livre"></div>
-            <div class="cell">
-                <p>auteur</p>
-            </div>
-            <div class="cell">
-                <p>titre du livre</p>
-            </div>
-            <div class="cell">
-                <p class="italic">J'ai récemment <br> plongé dans les pages <br> de 'The Kinfolk Table' <br> et j'ai été enchanté par</p>
-            </div>
-            <div class="cell">
-                <p class="flag flag-no-dispo">non dispo.</p>
-            </div>
-            <div class="cell action-cell">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 
     <!-- Liste de livre en card -->
     <div class="list-book">
         <!-- card -->
-        <div class="card-list">
-            <!-- En-tête de la card -->
-            <div class="card-list-header">
-                <img src="./images/photos/checker.png" alt="Photo courverture">
-                <div class="card-list-infos">
-                    <p class="card-list-title">Titre du livre</p>
-                    <p class="card-list-author">Auteur du livre</p>
-                    <p class="flag flag-dispo">disponible</p>
+        <?php foreach ($books as $book): ?>
+            <div class="card-list">
+                <!-- En-tête de la card -->
+                <div class="card-list-header">
+                    <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
+                    <div class="card-list-infos">
+                        <p class="card-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                        <p class="card-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                        <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
+                            <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                        </p>
+                    </div>
+                </div>
+                <!-- Description de la card -->
+                <p class="card-list-details"><?= htmlspecialchars($book->getDescription()) ?></p>
+                <!-- Action de la card -->
+                <div class="card-list-actions">
+                    <a class="edit" href="#">Éditer</a>
+                    <a class="supr" href="#">Supprimer</a>
                 </div>
             </div>
-            <!-- Description de la card -->
-            <p class="card-list-details">
-                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
-            </p>
-            <!-- Action de la card -->
-            <div class="card-list-actions">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
-
-        <div class="card-list">
-            <!-- En-tête de la card -->
-            <div class="card-list-header">
-                <img src="./images/photos/checker.png" alt="Photo courverture">
-                <div class="card-list-infos">
-                    <p class="card-list-title">Titre du livre</p>
-                    <p class="card-list-author">Auteur du livre</p>
-                    <p class="flag flag-dispo">disponible</p>
-                </div>
-            </div>
-            <!-- Description de la card -->
-            <p class="card-list-details">
-                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
-            </p>
-            <!-- Action de la card -->
-            <div class="card-list-actions">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
-
-        <div class="card-list">
-            <!-- En-tête de la card -->
-            <div class="card-list-header">
-                <img src="./images/photos/checker.png" alt="Photo courverture">
-                <div class="card-list-infos">
-                    <p class="card-list-title">Titre du livre</p>
-                    <p class="card-list-author">Auteur du livre</p>
-                    <p class="flag flag-dispo">disponible</p>
-                </div>
-            </div>
-            <!-- Description de la card -->
-            <p class="card-list-details">
-                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
-            </p>
-            <!-- Action de la card -->
-            <div class="card-list-actions">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
-
-        <div class="card-list">
-            <!-- En-tête de la card -->
-            <div class="card-list-header">
-                <img src="./images/photos/checker.png" alt="Photo courverture">
-                <div class="card-list-infos">
-                    <p class="card-list-title">Titre du livre</p>
-                    <p class="card-list-author">Auteur du livre</p>
-                    <p class="flag flag-dispo">disponible</p>
-                </div>
-            </div>
-            <!-- Description de la card -->
-            <p class="card-list-details">
-                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre
-            </p>
-            <!-- Action de la card -->
-            <div class="card-list-actions">
-                <a class="edit" href="#">Éditer</a>
-                <a class="supr" href="#">Supprimer</a>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 
 </section>
