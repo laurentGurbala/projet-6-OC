@@ -54,7 +54,7 @@ function getProfileImagePath(User $user): string
                 <p class="profil-library">BIBLIOTHEQUE</p>
                 <div class="profil-nb-book">
                     <img src="./images/svg/book.svg" alt="logo de 2 livres">
-                    <p>4 livres</p>
+                    <p><?= $bookCount ?> livres</p>
                 </div>
             </div>
         </div>

@@ -19,9 +19,11 @@ class AccountController
         $bookManager = new BookManager();
         $books = $bookManager->getBooksByUserId($userId);
 
+        $bookCount = $bookManager->countBooksByUserId($userId);
+
         // Affiche la vue avec les données utilisateur
         $view = new View("Mon compte");
-        $view->render("account", ["user" => $user, "books" => $books]);
+        $view->render("account", ["user" => $user, "books" => $books, "bookCount" => $bookCount]);
     }
 
     /**
