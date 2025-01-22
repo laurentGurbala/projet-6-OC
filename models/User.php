@@ -26,6 +26,8 @@ class User extends AbstractEntity
 
     private DateTime $createdAt;
 
+    private ?string $profileImage = null;
+
     /**
      * Définit le login de l'utilisateur.
      *
@@ -98,5 +100,15 @@ class User extends AbstractEntity
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
+    }
+
+    public function setProfileImage(?string $profileImage): void
+    {
+        $this->profileImage = $profileImage;
+    }
+
+    public function getProfileImage(): ?string
+    {
+        return $this->profileImage;
     }
 }

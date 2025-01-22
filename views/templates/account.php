@@ -26,6 +26,16 @@ function formatDuration(DateTime $date): string
     return trim($duration);
 }
 
+function getProfileImagePath(User $user): string
+{
+    // Si l'utilisateur a une image, retourne son chemin
+    if (!empty($user->getProfileImage())) {
+        return htmlspecialchars($user->getProfileImage());
+    }
+
+    // Sinon, retourne le chemin de l'image par défaut
+    return "./images/photos/checker.png";
+}
 ?>
 
 <section class="account-container">
@@ -34,7 +44,7 @@ function formatDuration(DateTime $date): string
         <!-- profil -->
         <div class="profil">
             <div>
-                <img class="profil-image" src="./images/photos/checker.png" alt="Profil">
+                <img class="profil-image" src="<?= getProfileImagePath($user) ?>" alt="Image de profil">
                 <p class="profil-modify" id="openModalBtn">modifier</p>
             </div>
             <div class="separator"></div>
@@ -275,6 +285,7 @@ function formatDuration(DateTime $date): string
 
 </section>
 
+<!-- Modale pour l'upload de l'image -->
 <div class="modal" id="uploadModal">
     <div class="modal-content">
         <span class="close" id="closeModalBtn">&times;</span>

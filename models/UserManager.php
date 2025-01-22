@@ -69,12 +69,13 @@ class UserManager extends AbstractEntityManager
 
     public function updateUser(int $userId, User $user): void
     {
-        $sql = "UPDATE user SET email = :email, login = :login, password = :password
+        $sql = "UPDATE user SET email = :email, login = :login, password = :password, profile_image = :profileImage
         WHERE id = :id";
         $params =  [
             ":login" => $user->getLogin(),
             ":email" => $user->getEmail(),
             ":password" => $user->getPassword(),
+            ":profileImage" => $user->getProfileImage(),
             ":id" => $user->getId()
         ];
 
@@ -95,6 +96,7 @@ class UserManager extends AbstractEntityManager
             $user->setEmail($result["email"]);
             $user->setPassword($result["password"]);
             $user->setCreatedAt(new DateTime($result["created_at"]));
+            $user->setProfileImage($result["profile_image"]);
             return $user;
         }
 

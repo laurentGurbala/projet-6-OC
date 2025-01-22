@@ -74,13 +74,22 @@ class AccountController
         header('Content-Type: application/json');
 
         try {
+            // Récupération de l'utilisateur actuel
+            $userId = $_SESSION["user_id"];
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($userId);
+
+            if (!$user) {
+                throw new Exception("Utilisateur introuvable.");
+            }
+
             // Vérifie si le fichier a bien été uploadé
             if (isset($_FILES["profileImage"]) && $_FILES["profileImage"]["error"] === UPLOAD_ERR_OK) {
                 $file = $_FILES["profileImage"];
 
                 // Vérification de base
                 $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
-                $maxFileSize = 2 * 1024 * 1024; // 2 MB
+                $maxFileSize = 8 * 1024 * 1024; // 8 MO
 
 
                 $fileTmpPath = $file['tmp_name'];
@@ -103,6 +112,13 @@ class AccountController
                     throw new FileException("Fichier trop volumineux (max 2 MB)");
                 }
 
+                // Vérifie si une image précédente existe et la supprime
+                $currentProfileImage = $user->getProfileImage();
+                if (!empty($currentProfileImage) && file_exists($currentProfileImage)) {
+                    unlink($currentProfileImage);
+                    $user->setProfileImage(null);
+                }
+
                 // Définit un chemin de destination pour le fichier
                 $uploadDir = PROJECT_ROOT . "/uploads/profiles/";
                 if (!is_dir($uploadDir)) {
@@ -116,6 +132,12 @@ class AccountController
                 if (!move_uploaded_file($fileTmpPath, $destinationPath)) {
                     throw new FileException("Erreur lors de l'enregistrement du fichier");
                 }
+
+                // Enregistrer le chemin de l'image dans la BDD
+                $relativePath = "./uploads/profiles/" . $uniqueFileName;
+
+                $user->setProfileImage($relativePath);
+                $userManager->updateUser($userId, $user);
 
                 // Répond avec succès
                 echo json_encode(["success" => true, "message" => "Fichier uploadé avec succès."]);
