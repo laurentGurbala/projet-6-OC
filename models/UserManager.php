@@ -67,6 +67,13 @@ class UserManager extends AbstractEntityManager
         return $user;
     }
 
+    /**
+     * Met à jour les informations d'un utilisateur dans la base de données.
+     *
+     * @param int $userId L'ID de l'utilisateur à mettre à jour.
+     * @param User $user L'instance de l'entité User contenant les nouvelles informations.
+     * @return void
+     */
     public function updateUser(int $userId, User $user): void
     {
         $sql = "UPDATE user SET email = :email, login = :login, password = :password, profile_image = :profileImage
@@ -83,6 +90,12 @@ class UserManager extends AbstractEntityManager
         $this->db->query($sql, $params);
     }
 
+    /**
+     * Récupère un utilisateur par son ID.
+     *
+     * @param int $userId L'ID de l'utilisateur à récupérer.
+     * @return User|null L'utilisateur correspondant ou null si aucun utilisateur n'est trouvé.
+     */
     public function getUserById(int $userId): ?User
     {
         $sql = "SELECT * FROM user WHERE id = :id";

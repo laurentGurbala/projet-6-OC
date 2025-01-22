@@ -24,8 +24,14 @@ class User extends AbstractEntity
      */
     private string $password;
 
+    /**
+     * @var DateTime $createdAt La date de création du compte de l'utilisateur.
+     */
     private DateTime $createdAt;
 
+    /**
+     * @var ?string $profileImage Le chemin de l'image de profil de l'utilisateur, ou null s'il n'y en a pas.
+     */
     private ?string $profileImage = null;
 
     /**
@@ -92,21 +98,43 @@ class User extends AbstractEntity
         return $this->password;
     }
 
+    /**
+     * Définit la date de création du compte de l'utilisateur.
+     *
+     * @param DateTime $createdAt La date de création du compte.
+     * @return void
+     */
     public function setCreatedAt(DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
+    /**
+     * Retourne la date de création du compte de l'utilisateur.
+     *
+     * @return DateTime La date de création du compte.
+     */
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
+    /**
+     * Définit l'image de profil de l'utilisateur.
+     *
+     * @param ?string $profileImage Le chemin relatif de l'image de profil ou null si l'utilisateur n'a pas d'image de profil.
+     * @return void
+     */
     public function setProfileImage(?string $profileImage): void
     {
         $this->profileImage = $profileImage;
     }
 
+    /**
+     * Retourne le chemin de l'image de profil de l'utilisateur.
+     *
+     * @return ?string Le chemin relatif de l'image de profil ou null si l'utilisateur n'a pas d'image.
+     */
     public function getProfileImage(): ?string
     {
         return $this->profileImage;
