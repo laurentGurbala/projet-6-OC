@@ -51,6 +51,13 @@ try {
             $accountController = new AccountController();
             $accountController->updateAccount();
             break;
+
+        case "uploadProfileImage":
+            Utils::checkIfUserIsConnected();
+            // Gère la modification de l'image de profil de l'utilisateur
+            $accountController = new AccountController();
+            $accountController->uploadProfileImage();
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
