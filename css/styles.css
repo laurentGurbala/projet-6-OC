@@ -8,6 +8,8 @@
 @import "./footer.css";
 @import "./formulaire.css";
 @import "./homepage.css";
+@import "./account.css";
+@import "./editBook.css";
 @import "./utilities.css";
 
 /* Variables */
@@ -18,7 +20,7 @@
 
     --bg-btn-primary: #00AC66;
     --bg-btn-hover: #006D41;
-    --bg-bgn-alt: #F5F3EF;
+    --bg-btn-alt: #F5F3EF;
 
     --color-font-primary: #292929;
     --color-font-secondary: #000;

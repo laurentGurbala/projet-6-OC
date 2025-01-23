@@ -38,6 +38,40 @@ try {
             $authController->loginUser();
             break;
 
+        case "account":
+            // Affiche la page mon compte d'un utilisateur
+            Utils::checkIfUserIsConnected();
+            $accountController = new AccountController();
+            $accountController->showAccount();
+            break;
+
+        case "updateAccount":
+            // Gère la modification de l'utilisateur
+            Utils::checkIfUserIsConnected();
+            $accountController = new AccountController();
+            $accountController->updateAccount();
+            break;
+
+        case "uploadProfileImage":
+            Utils::checkIfUserIsConnected();
+            // Gère la modification de l'image de profil de l'utilisateur
+            $accountController = new AccountController();
+            $accountController->uploadProfileImage();
+            break;
+
+        case "editBook":
+            Utils::checkIfUserIsConnected();
+            // Affiche la page d'édition d'un livre
+            $bookController = new BookController();
+            $bookController->showUpdateBookForm();
+            break;
+
+        case "deleteBook":
+            Utils::checkIfUserIsConnected();
+            // Gère la suppression d'un livre
+            $bookController = new BookController();
+            $bookController->deleteBook();
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
