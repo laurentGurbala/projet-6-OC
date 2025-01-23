@@ -29,6 +29,45 @@ class BookController
         $view->render("updateBookForm", ["book" => $book]);
     }
 
+    public function updateBook(): void
+    {
+        // Récupère le livre à modifier
+        $bookId = Utils::request("bookId", -1);
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+
+        // Récupère les données du POST
+        $title = Utils::request("title");
+        $author = Utils::request("author");
+        $description = Utils::request("description");
+        $availability = Utils::request("availability");
+
+        // Sanitiser les données
+        $title = filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $author = filter_var($author, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $description = filter_var($description, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $availability = filter_var($availability, FILTER_SANITIZE_NUMBER_INT);
+
+        if (empty($title) || empty($author) || !isset($availability)) {
+            throw new ValidationException("Tous les champs sont obligatoires.");
+        }
+
+        // Décodage de la description pour l'affichage
+        $description_decoded = html_entity_decode($description, ENT_QUOTES, 'UTF-8');
+
+        // Mise à jour du livre
+        $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setDescription($description_decoded);
+        $book->setAvailability($availability);
+
+        // Enregistre dans la BDD
+        $bookManager->updateBook($book);
+
+        // Redirection
+        Utils::redirect("account");
+    }
+
     public function deleteBook(): void
     {
         $id = Utils::request("id", -1);

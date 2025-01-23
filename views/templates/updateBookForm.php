@@ -10,7 +10,7 @@
         </div>
 
         <!-- Formulaire d'édition du livre -->
-        <form class="edit-form" action="#" method="POST">
+        <form class="edit-form" action="index.php?action=updateBook&bookId=<?= $book->getId() ?>" method="POST">
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Titre</label>

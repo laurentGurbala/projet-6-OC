@@ -73,6 +73,13 @@ try {
             $bookController->showUpdateBookForm();
             break;
 
+        case "updateBook":
+            Utils::checkIfUserIsConnected();
+            // Gère la modification d'un livre
+            $bookController = new BookController();
+            $bookController->updateBook();
+            break;
+
         case "deleteBook":
             Utils::checkIfUserIsConnected();
             // Gère la suppression d'un livre
