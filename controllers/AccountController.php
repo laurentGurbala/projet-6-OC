@@ -61,12 +61,8 @@ class AccountController
             $userManager = new UserManager();
             $userManager->updateUser($user->getId(), $user);
 
-            // Recharger les données utilisateur pour la vue
-            $updatedUser = $userManager->getUserById($user->getId());
-
-            // Redirection ou rechargement avec les données mises à jour
-            $view = new View("Mon compte");
-            $view->render("account", ["user" => $updatedUser]);
+            // Redirection
+            Utils::redirect("account");
         } catch (ValidationException $e) {
             // Gestion spécifique pour les erreurs de validation
             $view = new View("Mon compte");
