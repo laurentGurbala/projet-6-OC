@@ -20,7 +20,7 @@
     <!-- Section image -->
     <div class="banner-image">
         <img src="./images/photos/homepage_1.jpg" alt="Un vieil homme assis entrain de lire au milieu de son exposition de livre.">
-        <p class="text-mark">Hamza</p>
+        <p class="text-mark italic">Hamza</p>
     </div>
 </div>
 
@@ -36,7 +36,7 @@
             <div class="card-book-details">
                 <p class="card-book-title">Titre</p>
                 <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark">Vendu par lorem</p>
+                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="card-book-details">
                 <p class="card-book-title">Titre</p>
                 <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark">Vendu par lorem</p>
+                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
             <div class="card-book-details">
                 <p class="card-book-title">Titre</p>
                 <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark">Vendu par lorem</p>
+                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
             <div class="card-book-details">
                 <p class="card-book-title">Titre</p>
                 <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark">Vendu par lorem</p>
+                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
             </div>
         </div>
     </div>

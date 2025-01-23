@@ -58,6 +58,13 @@ try {
             $accountController = new AccountController();
             $accountController->uploadProfileImage();
             break;
+
+        case "editBook":
+            Utils::checkIfUserIsConnected();
+            // Affiche la page d'édition d'un livre
+            $bookController = new BookController();
+            $bookController->showUpdateBookForm();
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");

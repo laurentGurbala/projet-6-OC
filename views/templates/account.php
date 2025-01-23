@@ -135,7 +135,7 @@ function getProfileImagePath(User $user): string
                     </p>
                 </div>
                 <div class="cell action-cell">
-                    <a class="edit" href="#">Éditer</a>
+                    <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
                     <a class="supr" href="#">Supprimer</a>
                 </div>
             </div>
@@ -162,7 +162,7 @@ function getProfileImagePath(User $user): string
                 <p class="card-list-details"><?= htmlspecialchars($book->getDescription()) ?></p>
                 <!-- Action de la card -->
                 <div class="card-list-actions">
-                    <a class="edit" href="#">Éditer</a>
+                    <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
                     <a class="supr" href="#">Supprimer</a>
                 </div>
             </div>

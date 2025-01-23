@@ -52,7 +52,6 @@ p {
     font-family: var(--font-family-text);
     font-weight: var(--font-weight-primary);
     line-height: 1.2;
-    font-style: italic;
 }
 
 .btn {
