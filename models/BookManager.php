@@ -54,6 +54,24 @@ class BookManager extends AbstractEntityManager
         return null;
     }
 
+    public function updateBook(Book $book): void
+    {
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description, availability = :availability, photo = :photo, user_id = :userId
+        WHERE id = :id";
+        $params = [
+            ":title" => $book->getTitle(),
+            ":author" => $book->getAuthor(),
+            ":description" => $book->getDescription(),
+            ":availability" => $book->isAvailable(),
+            ":photo" => $book->getPhoto(),
+            ":userId" => $book->getUserId(),
+            ":id" => $book->getId()
+        ];
+
+        // Exécuter la requête
+        $this->db->query($sql, $params);
+    }
+
     public function deleteBook(int $id): void
     {
         $sql = "DELETE FROM book WHERE id = :id";

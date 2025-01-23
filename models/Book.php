@@ -6,7 +6,7 @@ class Book extends AbstractEntity
     private string $author;
     private string $description;
     private bool $availability;
-    private string $photo;
+    private ?string $photo = null;
     private int $userId;
 
     // Getters
@@ -26,7 +26,7 @@ class Book extends AbstractEntity
     {
         return $this->availability;
     }
-    public function getPhoto(): string
+    public function getPhoto(): ?string
     {
         return $this->photo;
     }
@@ -56,7 +56,7 @@ class Book extends AbstractEntity
         $this->availability = $availability;
     }
 
-    public function setPhoto(string $photo)
+    public function setPhoto(?string $photo)
     {
         $this->photo = $photo;
     }

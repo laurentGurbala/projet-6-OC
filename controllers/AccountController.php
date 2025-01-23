@@ -159,7 +159,7 @@ class AccountController
 
             // Vérifie la taille du fichier
             if ($fileSize > $maxFileSize) {
-                throw new FileException("Fichier trop volumineux (max 2 MB)");
+                throw new FileException("Fichier trop volumineux (max 8 MB)");
             }
 
             return $file;

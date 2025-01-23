@@ -3,10 +3,13 @@
     <h1 class="title-primary edit-title">Modifier les informations</h1>
 
     <div class="edit-card">
+        <!-- Image du livre -->
         <div class="edit-image">
             <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
-            <p class="edit-modify">modifier la photo</p>
+            <p class="edit-modify" id="openModalBtn">modifier la photo</p>
         </div>
+
+        <!-- Formulaire d'édition du livre -->
         <form class="edit-form" action="#" method="POST">
             <!-- Title -->
             <div class="form-group">
@@ -22,8 +25,8 @@
 
             <!-- Commentaire -->
             <div class="form-group">
-                <label for="author">Author</label>
-                <textarea class="edit-textarea" name="author" id="author"><?= htmlspecialchars($book->getDescription()) ?></textarea>
+                <label for="description">Commentaire</label>
+                <textarea class="edit-textarea" name="description" id="description"><?= htmlspecialchars($book->getDescription()) ?></textarea>
             </div>
 
             <div class="form-group">
@@ -38,3 +41,20 @@
         </form>
     </div>
 </section>
+
+<!-- Modale pour l'upload de l'image -->
+<div class="modal" id="uploadModal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <h2 class="modal-title">Changer votre image du livre</h2>
+        <form class="form-container" id="uploadBookForm" method="POST" enctype="multipart/form-data">
+            <div>
+                <input type="hidden" name="bookId" value="<?= $book->getId() ?>">
+                <label for="profileImage">Choisissez une image :</label>
+                <input type="file" name="profileImage" id="profileImage" accept="image/*" required>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</div>
