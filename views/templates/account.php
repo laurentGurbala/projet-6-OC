@@ -115,32 +115,32 @@ function getProfileImagePath(User $user): string
                     <p>Action</p>
                 </div>
             </div>
-        <?php endif; ?>
 
-        <?php foreach ($books as $book) : ?>
-            <div class="table-row">
-                <div class="cell"><img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>"></div>
-                <div class="cell">
-                    <p><?= htmlspecialchars($book->getTitle()) ?></p>
+            <?php foreach ($books as $book) : ?>
+                <div class="table-row">
+                    <div class="cell"><img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>"></div>
+                    <div class="cell">
+                        <p><?= htmlspecialchars($book->getTitle()) ?></p>
+                    </div>
+                    <div class="cell">
+                        <p><?= htmlspecialchars($book->getAuthor()) ?></p>
+                    </div>
+                    <div class="cell">
+                        <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
+                    </div>
+                    <div class="cell">
+                        <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
+                            <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                        </p>
+                    </div>
+                    <div class="cell action-cell">
+                        <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
+                        <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
+                            <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
+                    </div>
                 </div>
-                <div class="cell">
-                    <p><?= htmlspecialchars($book->getAuthor()) ?></p>
-                </div>
-                <div class="cell">
-                    <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
-                </div>
-                <div class="cell">
-                    <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
-                        <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
-                    </p>
-                </div>
-                <div class="cell action-cell">
-                    <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
-                    <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
-                        <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 
     <!-- Liste de livre en card -->
