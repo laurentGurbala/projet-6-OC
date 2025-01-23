@@ -28,4 +28,16 @@ class BookController
         $view = new View("Edition d'un livre");
         $view->render("updateBookForm", ["book" => $book]);
     }
+
+    public function deleteBook(): void
+    {
+        $id = Utils::request("id", -1);
+
+        // Supprimer le livre
+        $bookManager = new BookManager();
+        $bookManager->deleteBook($id);
+
+        // Rediriger l'utilisateur vers son compte
+        Utils::redirect("account");
+    }
 }

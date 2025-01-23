@@ -136,7 +136,8 @@ function getProfileImagePath(User $user): string
                 </div>
                 <div class="cell action-cell">
                     <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
-                    <a class="supr" href="#">Supprimer</a>
+                    <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
+                        <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -163,7 +164,8 @@ function getProfileImagePath(User $user): string
                 <!-- Action de la card -->
                 <div class="card-list-actions">
                     <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
-                    <a class="supr" href="#">Supprimer</a>
+                    <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
+                        <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                 </div>
             </div>
         <?php endforeach; ?>

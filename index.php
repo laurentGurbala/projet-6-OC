@@ -65,6 +65,13 @@ try {
             $bookController = new BookController();
             $bookController->showUpdateBookForm();
             break;
+
+        case "deleteBook":
+            Utils::checkIfUserIsConnected();
+            // Gère la suppression d'un livre
+            $bookController = new BookController();
+            $bookController->deleteBook();
+            break;
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
