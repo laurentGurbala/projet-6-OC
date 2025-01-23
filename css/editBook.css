@@ -28,6 +28,7 @@
 .edit-modify {
     text-align: right;
     font-size: 0.75rem;
+    cursor: pointer;
 }
 
 .edit-form {

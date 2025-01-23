@@ -59,11 +59,25 @@ try {
             $accountController->uploadProfileImage();
             break;
 
+        case "uploadBookImage":
+            Utils::checkIfUserIsConnected();
+            // Gère la modification de l'image d'un livre
+            $bookController = new BookController();
+            $bookController->uploadBookImage();
+            break;
+
         case "editBook":
             Utils::checkIfUserIsConnected();
             // Affiche la page d'édition d'un livre
             $bookController = new BookController();
             $bookController->showUpdateBookForm();
+            break;
+
+        case "updateBook":
+            Utils::checkIfUserIsConnected();
+            // Gère la modification d'un livre
+            $bookController = new BookController();
+            $bookController->updateBook();
             break;
 
         case "deleteBook":
