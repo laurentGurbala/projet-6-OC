@@ -15,7 +15,12 @@ class HomeController
      */
     public function showHome(): void
     {
+        // Récupère les derniers ajouts de livre
+        $bookManager = new BookManager();
+        $lastBooks = $bookManager->getLastBooks();
+
+        // Affiche la vue
         $view = new View("Accueil");
-        $view->render("home");
+        $view->render("home", ["books" => $lastBooks]);
     }
 }

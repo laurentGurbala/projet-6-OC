@@ -2,6 +2,35 @@
 
 class BookManager extends AbstractEntityManager
 {
+    public function getLastBooks(int $limit = 4): array
+    {
+        $sql = "SELECT  
+        b.*, 
+        u.login AS seller_pseudo 
+        FROM book b
+        JOIN user u ON b.user_id = u.id
+        ORDER BY b.created_at DESC
+        LIMIT $limit";
+
+        $result = $this->db->query($sql);
+
+        $books = [];
+
+        while ($b = $result->fetch()) {
+            $book = new Book();
+            $book->setId($b["id"]);
+            $book->setTitle($b["title"]);
+            $book->setAuthor($b["author"]);
+            $book->setDescription($b["description"]);
+            $book->setAvailability($b["availability"]);
+            $book->setPhoto($b["photo"]);
+            $book->setUserId($b["user_id"]);
+            $book->setSellerPseudo($b["seller_pseudo"]);
+            $books[] = $book;
+        }
+
+        return $books;
+    }
 
     public function getBooksByUserId(int $userId): array
     {

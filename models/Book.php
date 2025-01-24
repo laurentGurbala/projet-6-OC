@@ -8,6 +8,7 @@ class Book extends AbstractEntity
     private bool $availability;
     private ?string $photo = null;
     private int $userId;
+    private ?string $sellerPseudo;
 
     // Getters
     public function getTitle(): string
@@ -33,6 +34,11 @@ class Book extends AbstractEntity
     public function getUserId(): string
     {
         return $this->userId;
+    }
+
+    public function getSellerPseudo(): ?string
+    {
+        return $this->sellerPseudo;
     }
 
     // Setters
@@ -64,5 +70,10 @@ class Book extends AbstractEntity
     public function setUserId(int $userId)
     {
         $this->userId = $userId;
+    }
+
+    public function setSellerPseudo(?string $sellerPseudo)
+    {
+        $this->sellerPseudo = $sellerPseudo;
     }
 }
