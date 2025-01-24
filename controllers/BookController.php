@@ -6,6 +6,12 @@
 
 class BookController
 {
+    /**
+     * Affiche le formulaire de mise à jour d'un livre.
+     *
+     * @return void
+     * @throws Exception Si le livre n'existe pas.
+     */
     public function showUpdateBookForm(): void
     {
         // Récupération de l'id
@@ -29,6 +35,12 @@ class BookController
         $view->render("updateBookForm", ["book" => $book]);
     }
 
+    /**
+     * Met à jour les informations d'un livre.
+     *
+     * @return void
+     * @throws ValidationException Si les champs requis sont manquants ou invalides.
+     */
     public function updateBook(): void
     {
         // Récupère le livre à modifier
@@ -68,6 +80,11 @@ class BookController
         Utils::redirect("account");
     }
 
+    /**
+     * Supprime un livre.
+     *
+     * @return void
+     */
     public function deleteBook(): void
     {
         $id = Utils::request("id", -1);
@@ -80,6 +97,11 @@ class BookController
         Utils::redirect("account");
     }
 
+    /**
+     * Gère l'upload d'une image pour un livre.
+     *
+     * @return void
+     */
     public function uploadBookImage(): void
     {
         // Indique que la réponser sera en JSON
@@ -116,6 +138,12 @@ class BookController
         }
     }
 
+    /**
+     * Valide le fichier uploadé.
+     *
+     * @return array Les données du fichier validé.
+     * @throws FileException Si le fichier est invalide.
+     */
     private function validateFileUpload(): array
     {
         if (isset($_FILES["profileImage"]) && $_FILES["profileImage"]["error"] === UPLOAD_ERR_OK) {
@@ -150,6 +178,13 @@ class BookController
         }
     }
 
+    /**
+     * Déplace le fichier uploadé vers le répertoire cible.
+     *
+     * @param array $file Données du fichier.
+     * @return string Chemin relatif vers le fichier enregistré.
+     * @throws FileException Si le déplacement échoue.
+     */
     private function moveUploadedFile(array $file): string
     {
         // Définit un chemin de destination pour le fichier
@@ -171,6 +206,13 @@ class BookController
         return "./uploads/books/" . $uniqueFileName;
     }
 
+    /**
+     * Enregistre l'image d'un livre en base de données.
+     *
+     * @param Book $book Le livre concerné.
+     * @param string $path Chemin de l'image.
+     * @return void
+     */
     private function saveBookImage(Book $book, string $path): void
     {
         $book->setPhoto($path);
