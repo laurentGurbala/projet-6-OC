@@ -23,4 +23,15 @@ class HomeController
         $view = new View("Accueil");
         $view->render("home", ["books" => $lastBooks]);
     }
+
+    public function showListBooks(): void
+    {
+        // Récupérer l'ensemble des livres
+        $bookManager = new BookManager();
+        $books = $bookManager->getAllBooks();
+
+        // Afficher la vue
+        $view = new View("Nos livres");
+        $view->render("listBooks", ["books" => $books]);
+    }
 }

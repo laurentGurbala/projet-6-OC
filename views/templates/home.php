@@ -48,7 +48,7 @@
     <?php endif; ?>
 
     <!-- button -->
-    <a class="btn btn-primary" href="#">Voir tous les livres</a>
+    <a class="btn btn-primary" href="index.php?action=listBooks">Voir tous les livres</a>
 </section>
 
 <!-- Comment ça marche -->

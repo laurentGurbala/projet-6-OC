@@ -14,6 +14,12 @@ try {
             $homeController->showHome();
             break;
 
+        case "listBooks":
+            // Affiche la page des livres à échanger
+            $homeController = new HomeController();
+            $homeController->showListBooks();
+            break;
+
         case "register":
             // Affiche la vue d'inscription
             $authController = new AuthController();
@@ -86,6 +92,7 @@ try {
             $bookController = new BookController();
             $bookController->deleteBook();
             break;
+
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
