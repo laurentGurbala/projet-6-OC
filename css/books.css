@@ -28,7 +28,7 @@
 
 .search-container i {
     position: absolute;
-    top: 33%;
+    /* top: 33%; */
     left: 10px;
     color: var(--color-font-tertiaire);
 }
@@ -42,4 +42,31 @@
     justify-content: space-between;
     gap: 48px 0px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+    .books-container {
+        padding: 100px 165px 80px;
+    }
+
+    .books-header {
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        margin-bottom: 40px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .books-list {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 768px) {
+    .books-container {
+        padding: 55px 20px;
+    }
 }
