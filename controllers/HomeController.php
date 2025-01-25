@@ -26,9 +26,17 @@ class HomeController
 
     public function showListBooks(): void
     {
-        // Récupérer l'ensemble des livres
+        // Récupération éventuelle du filtre
+        $searchTerm = Utils::request("q", "");
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();
+
+        if (!empty($searchTerm)) {
+            // Récupère les livres correspondants à une recherche
+            $books = $bookManager->getSearchBooksByTitle($searchTerm);
+        } else {
+            // Récupérer l'ensemble des livres
+            $books = $bookManager->getAllBooks();
+        }
 
         // Afficher la vue
         $view = new View("Nos livres");

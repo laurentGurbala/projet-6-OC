@@ -8,10 +8,12 @@
 <div class="books-container">
     <div class="books-header">
         <h1 class="title-primary">Nos livres à l'échange</h1>
-        <div class="search-container">
+        <form class="search-container" method="GET" action="index.php">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="search-book" id="search-book" placeholder="Rechercher un livre">
-        </div>
+            <input type="hidden" name="action" value="listBooks">
+            <input type="search" name="q" id="search-book" placeholder="Rechercher un livre" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+        </form>
+
     </div>
 
     <?php if (empty($books)): ?>
