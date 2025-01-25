@@ -36,6 +36,17 @@ function getProfileImagePath(User $user): string
     // Sinon, retourne le chemin de l'image par défaut
     return "./images/photos/checker.png";
 }
+
+function getAvailabilityClass(bool $isAvailable): string
+{
+    return $isAvailable ? 'flag-dispo' : 'flag-no-dispo';
+}
+
+function getAvailabilityText(bool $isAvailable): string
+{
+    return $isAvailable ? 'disponible' : 'non dispo.';
+}
+
 ?>
 
 <section class="account-container">
@@ -129,13 +140,16 @@ function getProfileImagePath(User $user): string
                         <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
                     </div>
                     <div class="cell">
-                        <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
-                            <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                        <p class="flag <?= getAvailabilityClass($book->isAvailable()) ?>">
+                            <?= getAvailabilityText($book->isAvailable()) ?>
                         </p>
                     </div>
                     <div class="cell action-cell">
-                        <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
+                        <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>"
+                            aria-label="Éditer le livre <?= htmlspecialchars($book->getTitle()) ?>">Éditer</a>
+
                         <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
+                            aria-label="Supprimer le livre <?= htmlspecialchars($book->getTitle()) ?>"
                             <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                     </div>
                 </div>
@@ -144,7 +158,7 @@ function getProfileImagePath(User $user): string
     </div>
 
     <!-- Liste de livre en card -->
-    <div class="list-book">
+    <div class=" list-book">
         <!-- card -->
         <?php foreach ($books as $book): ?>
             <div class="card-list">
@@ -154,8 +168,8 @@ function getProfileImagePath(User $user): string
                     <div class="card-list-infos">
                         <p class="card-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
                         <p class="card-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                        <p class="flag <?= $book->isAvailable() ? 'flag-dispo' : 'flag-no-dispo' ?>">
-                            <?= $book->isAvailable() ? 'disponible' : 'non dispo.' ?>
+                        <p class="flag <?= getAvailabilityClass($book->isAvailable()) ?>">
+                            <?= getAvailabilityText($book->isAvailable()) ?>
                         </p>
                     </div>
                 </div>

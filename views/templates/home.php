@@ -29,47 +29,26 @@
     <!-- Titre -->
     <h2 class="title-secondary">Les derniers livres ajoutés</h2>
 
-    <!-- list -->
-    <div class="ajout-list">
-        <div class="card-book">
-            <img class="card-book-img" src="./images/photos/checker.png" alt="couverture du livre">
-            <div class="card-book-details">
-                <p class="card-book-title">Titre</p>
-                <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
-            </div>
+    <?php if (empty($books)): ?>
+        <p>Aucun livre disponible pour le moment.</p>
+    <?php else: ?>
+        <!-- list -->
+        <div class="ajout-list">
+            <?php foreach ($books as $book): ?>
+                <div class="card-book">
+                    <img class="card-book-img" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
+                    <div class="card-book-details">
+                        <p class="card-book-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                        <p class="card-book-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                        <p class="card-book-pseudo text-mark italic">Vendu par <?= htmlspecialchars($book->getSellerPseudo()) ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-
-        <div class="card-book">
-            <img class="card-book-img" src="./images/photos/checker.png" alt="couverture du livre">
-            <div class="card-book-details">
-                <p class="card-book-title">Titre</p>
-                <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
-            </div>
-        </div>
-
-        <div class="card-book">
-            <img class="card-book-img" src="./images/photos/checker.png" alt="couverture du livre">
-            <div class="card-book-details">
-                <p class="card-book-title">Titre</p>
-                <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
-            </div>
-        </div>
-
-        <div class="card-book">
-            <img class="card-book-img" src="./images/photos/checker.png" alt="couverture du livre">
-            <div class="card-book-details">
-                <p class="card-book-title">Titre</p>
-                <p class="card-book-author">Auteur</p>
-                <p class="card-book-pseudo text-mark italic">Vendu par lorem</p>
-            </div>
-        </div>
-    </div>
+    <?php endif; ?>
 
     <!-- button -->
-    <a class="btn btn-primary" href="#">Voir tous les livres</a>
+    <a class="btn btn-primary" href="index.php?action=listBooks">Voir tous les livres</a>
 </section>
 
 <!-- Comment ça marche -->

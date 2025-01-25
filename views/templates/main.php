@@ -39,7 +39,7 @@
                     <nav class="desktop-menu" aria-label="Menu principal">
                         <ul>
                             <li><a class="link" href="index.php">Accueil</a></li>
-                            <li><a class="link" href="#">Nos livres à l'échange</a></li>
+                            <li><a class="link" href="index.php?action=listBooks">Nos livres à l'échange</a></li>
                         </ul>
                     </nav>
                     <!-- Icon hamburger -->
