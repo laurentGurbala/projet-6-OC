@@ -51,6 +51,26 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    public function getSearchBooksByTitle(string $title): array
+    {
+        $sql = "SELECT B.*,
+        u.login AS seller_pseudo
+        FROM book b
+        JOIN user u ON b.user_id = u.id
+        WHERE b.title LIKE :title
+        ORDER BY b.created_at DESC";
+
+        $params = [":title" => "%" . $title . "%"];
+        $result = $this->db->query($sql, $params);
+
+        $books = [];
+        while ($b = $result->fetch()) {
+            $books[] = $this->mapToBook($b);
+        }
+
+        return $books;
+    }
+
     /**
      * Récupère tous les livres associés à un utilisateur spécifique.
      *
