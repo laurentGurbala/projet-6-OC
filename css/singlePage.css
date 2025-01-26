@@ -26,7 +26,7 @@
 .single-content {
     width: 100%;
     max-width: 500px;
-    padding: 60px 0;
+    padding: 3.75rem 0;
 }
 
 .single-content .title-primary {
@@ -59,13 +59,13 @@
     border-radius: 114px;
     gap: 12px;
     padding: 6px;
-    padding-right: 17px;
-    margin-bottom: 80px;
+    padding-right: 1rem;
+    margin-bottom: 5rem;
 }
 
 .single-owner img {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
 }
 
@@ -75,4 +75,36 @@
 
 .single-container .btn {
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .single-link {
+        display: none;
+    }
+
+    .single-container {
+        flex-direction: column;
+    }
+
+    .single-img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .single-section {
+        display: block;
+        padding: 0 20px;
+    }
+
+    .single-content {
+        padding: 2.5rem 0 5rem;
+    }
+
+    .single-content .title-primary {
+        margin-bottom: 2.5rem;
+    }
+
+    .single-description {
+        margin-bottom: 2.5rem;
+    }
 }
