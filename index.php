@@ -20,6 +20,12 @@ try {
             $homeController->showListBooks();
             break;
 
+        case "single":
+            // Affiche la single page d'un livre
+            $homeController = new HomeController();
+            $homeController->showSinglePage();
+            break;
+
         case "register":
             // Affiche la vue d'inscription
             $authController = new AuthController();

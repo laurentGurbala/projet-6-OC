@@ -23,12 +23,14 @@
         <div class="books-list">
             <?php foreach ($books as $book): ?>
                 <div class="card-book">
-                    <img class="card-book-img" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
-                    <div class="card-book-details">
-                        <p class="card-book-title"><?= htmlspecialchars($book->getTitle()) ?></p>
-                        <p class="card-book-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                        <p class="card-book-pseudo text-mark italic">Vendu par <?= htmlspecialchars($book->getSellerPseudo()) ?></p>
-                    </div>
+                    <a href="index.php?action=single&bookId=<?= htmlspecialchars($book->getId()) ?>">
+                        <img class="card-book-img" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
+                        <div class="card-book-details">
+                            <p class="card-book-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="card-book-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                            <p class="card-book-pseudo text-mark italic">Vendu par <?= htmlspecialchars($book->getSellerPseudo()) ?></p>
+                        </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
