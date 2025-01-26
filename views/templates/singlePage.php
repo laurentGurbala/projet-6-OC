@@ -28,10 +28,13 @@
             </p>
             <!-- Propriétaire -->
             <p class="single-subtitle">propriétaire</p>
-            <div class="single-owner">
-                <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= $owner->getLogin() ?>">
+            <a href="#" class="single-owner">
+                <div class="image-container">
+                    <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= $owner->getLogin() ?>">
+                </div>
                 <p><?= $owner->getLogin() ?></p>
-            </div>
+            </a>
+
 
             <button class="btn btn-primary">Envoyer un message</button>
         </div>
