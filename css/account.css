@@ -34,6 +34,7 @@
     width: 135px;
     height: 135px;
     margin-bottom: 5px;
+    object-fit: cover;
 }
 
 .profil-modify {
@@ -196,6 +197,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     font-size: 0.875rem;
     height: 62px;
     width: 220px;

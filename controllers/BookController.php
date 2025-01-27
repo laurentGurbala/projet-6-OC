@@ -64,14 +64,18 @@ class BookController
             throw new ValidationException("Tous les champs sont obligatoires.");
         }
 
-        // Décodage de la description pour l'affichage
+        /// Décodage des paramètres pour l'affichage
+        $title_decoded = html_entity_decode($title, ENT_QUOTES, 'UTF-8');
+        $author_decoded = html_entity_decode($author, ENT_QUOTES, 'UTF-8');
         $description_decoded = html_entity_decode($description, ENT_QUOTES, 'UTF-8');
+        $availability_decoded = html_entity_decode($availability, ENT_QUOTES, 'UTF-8');
 
-        // Mise à jour du livre
-        $book->setTitle($title);
-        $book->setAuthor($author);
+        // Mise à jour du livre avec les valeurs décodées
+        $book->setTitle($title_decoded);
+        $book->setAuthor($author_decoded);
         $book->setDescription($description_decoded);
-        $book->setAvailability($availability);
+        $book->setAvailability($availability_decoded);
+
 
         // Enregistre dans la BDD
         $bookManager->updateBook($book);

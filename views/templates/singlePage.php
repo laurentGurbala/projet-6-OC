@@ -28,11 +28,11 @@
             </p>
             <!-- Propriétaire -->
             <p class="single-subtitle">propriétaire</p>
-            <a href="#" class="single-owner">
+            <a href="index.php?action=publicAccount&userId=<?= htmlspecialchars($owner->getId()) ?>" class="single-owner">
                 <div class="image-container">
-                    <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= $owner->getLogin() ?>">
+                    <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= htmlspecialchars($owner->getLogin()) ?>">
                 </div>
-                <p><?= $owner->getLogin() ?></p>
+                <p><?= htmlspecialchars($owner->getLogin()) ?></p>
             </a>
 
 
