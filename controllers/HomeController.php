@@ -42,4 +42,20 @@ class HomeController
         $view = new View("Nos livres");
         $view->render("listBooks", ["books" => $books]);
     }
+
+    public function showSinglePage(): void
+    {
+        $bookId = Utils::request("bookId", -1);
+
+        // Récupère le livre
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+
+        // Rècupère le propriétaire
+        $userManager = new UserManager();
+        $owner = $userManager->getUserById($book->getUserId());
+
+        $view = new View("Livre " . $book->getTitle());
+        $view->render("singlePage", ["book" => $book, "owner" => $owner]);
+    }
 }
