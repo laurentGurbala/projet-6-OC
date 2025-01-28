@@ -55,7 +55,27 @@ class HomeController
         $userManager = new UserManager();
         $owner = $userManager->getUserById($book->getUserId());
 
-        $view = new View("Livre " . $book->getTitle());
+        $view = new View("Livre " . htmlspecialchars($book->getTitle()));
         $view->render("singlePage", ["book" => $book, "owner" => $owner]);
+    }
+
+    public function showPublicAccount(): void
+    {
+        $userId = Utils::request("userId", -1);
+
+        // Récupère le propriètaire du compte
+        $userManager = new UserManager();
+        $owner = $userManager->getUserById($userId);
+
+        // Récupère la liste de livre
+        $bookManager = new BookManager();
+        $books = $bookManager->getBooksByUserId($userId);
+
+        // Récupère le calcul des livres
+        $bookCount = $bookManager->countBooksByUserId($userId);
+
+        // Crée la vue
+        $view = new View("Compte de " . htmlspecialchars($owner->getLogin()));
+        $view->render("publicAccount", ["owner" => $owner, "books" => $books, "bookCount" => $bookCount]);
     }
 }

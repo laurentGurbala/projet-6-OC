@@ -26,6 +26,12 @@ try {
             $homeController->showSinglePage();
             break;
 
+        case "publicAccount":
+            // Affiche la page du compte public
+            $homeController = new HomeController();
+            $homeController->showPublicAccount();
+            break;
+
         case "register":
             // Affiche la vue d'inscription
             $authController = new AuthController();
