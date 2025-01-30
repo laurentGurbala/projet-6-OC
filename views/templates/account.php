@@ -4,28 +4,6 @@
  * Affiche la page mon compte
  */
 
-function formatDuration(DateTime $date): string
-{
-    $now = new DateTime();
-    $interval = $now->diff($date);
-
-    $duration = "";
-
-    if ($interval->y > 0) {
-        $duration .= $interval->y . " ans ";
-    }
-
-    if ($interval->m > 0) {
-        $duration .= $interval->m . " mois ";
-    }
-
-    if ($interval->d > 0) {
-        $duration .= $interval->d . " jours";
-    }
-
-    return trim($duration);
-}
-
 function getProfileImagePath(User $user): string
 {
     // Si l'utilisateur a une image, retourne son chemin
@@ -39,7 +17,7 @@ function getProfileImagePath(User $user): string
 
 function getAvailabilityClass(bool $isAvailable): string
 {
-    return $isAvailable ? 'flag-dispo' : 'flag-no-dispo';
+    return $isAvailable ? 'flag--available' : 'flag--unavailable';
 }
 
 function getAvailabilityText(bool $isAvailable): string
@@ -50,23 +28,19 @@ function getAvailabilityText(bool $isAvailable): string
 ?>
 
 <section class="account-container">
-    <h1 class="title-primary">Mon compte</h1>
+    <h1 class="account-title title-primary">Mon compte</h1>
     <div class="account-flex">
         <!-- profil -->
         <div class="profil">
-            <div>
-                <img class="profil-image" src="<?= getProfileImagePath($user) ?>" alt="Image de profil">
-                <p class="profil-modify" id="openModalBtn">modifier</p>
-            </div>
+            <img class="profil-image" src="<?= getProfileImagePath($user) ?>" alt="Image de profil">
+            <p class="profil-modify" id="openModalBtn">modifier</p>
             <div class="separator"></div>
-            <div class="profil-details">
-                <h2 class="title-secondary profil-name"><?= $user->getLogin() ?></h2>
-                <p class="profil-date">Membre depuis <?= formatDuration($user->getCreatedAt()) ?></p>
-                <p class="profil-library">BIBLIOTHEQUE</p>
-                <div class="profil-nb-book">
-                    <img src="./images/svg/book.svg" alt="logo de 2 livres">
-                    <p><?= $bookCount ?> livres</p>
-                </div>
+            <h1 class="profil-title"><?= htmlspecialchars($user->getLogin()) ?></h1>
+            <p class="profil-date">Membre depuis <?= Utils::formatDuration($user->getCreatedAt()) ?></p>
+            <p class="profil-library">bibliotheque</p>
+            <div class="profil-nb-book">
+                <img src="./images/svg/book.svg" alt="logo de 2 livres">
+                <p><?= $bookCount ?> livres</p>
             </div>
         </div>
 
@@ -80,20 +54,20 @@ function getAvailabilityText(bool $isAvailable): string
                 <form class="infos-form" action="index.php?action=updateAccount" method="POST">
                     <!-- Email -->
                     <div class="form-group">
-                        <label for="email">Adresse email</label>
-                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" required>
+                        <label class="input-label" for="email">Adresse email</label>
+                        <input class="input-field" type="email" id="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" required>
                     </div>
 
                     <!-- Mot de passe -->
                     <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" placeholder="Laisser vide pour ne pas changer">
+                        <label class="input-label" for="password">Mot de passe</label>
+                        <input class="input-field" type="password" id="password" name="password" placeholder="Laisser vide pour ne pas changer">
                     </div>
 
                     <!-- Pseudo -->
                     <div class="form-group">
-                        <label for="login">Pseudo</label>
-                        <input type="text" id="login" name="login" value="<?= htmlspecialchars($user->getLogin()) ?>" required>
+                        <label class="input-label" for="login">Pseudo</label>
+                        <input class="input-field" type="text" id="login" name="login" value="<?= htmlspecialchars($user->getLogin()) ?>" required>
                     </div>
 
                     <!-- button -->
@@ -103,52 +77,58 @@ function getAvailabilityText(bool $isAvailable): string
         </div>
     </div>
 
-    <!-- Liste de livre en tableau -->
-    <div class="table">
+    <!-- Liste des livres -->
+    <div class="book-list book-list--large">
         <?php if (!empty($books)): ?>
-            <div class="table-header">
-                <div class="cell">
+            <!-- En-tête -->
+            <div class="book-list-header">
+                <div class="book-list-cell">
                     <p>Photo</p>
                 </div>
-                <div class="cell">
+                <div class="book-list-cell">
                     <p>Titre</p>
                 </div>
-                <div class="cell">
+                <div class="book-list-cell">
                     <p>Auteur</p>
                 </div>
-                <div class="cell">
+                <div class="book-list-cell">
                     <p>Description</p>
                 </div>
-                <div class="cell">
+                <div class="book-list-cell">
                     <p>Disponibilité</p>
                 </div>
-                <div class="cell">
+                <div class="book-list-cell book-list-cell--actions">
                     <p>Action</p>
                 </div>
             </div>
 
+            <!-- Row -->
             <?php foreach ($books as $book) : ?>
-                <div class="table-row">
-                    <div class="cell"><img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>"></div>
-                    <div class="cell">
-                        <p><?= htmlspecialchars($book->getTitle()) ?></p>
+                <div class="book-list-row">
+                    <div class="book-list-content">
+                        <div class="book-list-image"><img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>"></div>
+
+                        <div class="book-list-details">
+                            <p class="book-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="book-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                        </div>
+
                     </div>
-                    <div class="cell">
-                        <p><?= htmlspecialchars($book->getAuthor()) ?></p>
+
+                    <div class="book-list-description">
+                        <p class="text-italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
                     </div>
-                    <div class="cell">
-                        <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
-                    </div>
-                    <div class="cell">
+                    <div class="book-list-flag">
                         <p class="flag <?= getAvailabilityClass($book->isAvailable()) ?>">
                             <?= getAvailabilityText($book->isAvailable()) ?>
                         </p>
                     </div>
-                    <div class="cell action-cell">
-                        <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>"
+
+                    <div class="book-list-actions">
+                        <a class="text-underline" href="index.php?action=editBook&id=<?= $book->getId() ?>"
                             aria-label="Éditer le livre <?= htmlspecialchars($book->getTitle()) ?>">Éditer</a>
 
-                        <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
+                        <a class="text-underline link-remove" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
                             aria-label="Supprimer le livre <?= htmlspecialchars($book->getTitle()) ?>"
                             <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                     </div>
@@ -157,34 +137,41 @@ function getAvailabilityText(bool $isAvailable): string
         <?php endif; ?>
     </div>
 
-    <!-- Liste de livre en card -->
-    <div class=" list-book">
-        <!-- card -->
-        <?php foreach ($books as $book): ?>
-            <div class="card-list">
-                <!-- En-tête de la card -->
-                <div class="card-list-header">
-                    <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
-                    <div class="card-list-infos">
-                        <p class="card-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
-                        <p class="card-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                        <p class="flag <?= getAvailabilityClass($book->isAvailable()) ?>">
-                            <?= getAvailabilityText($book->isAvailable()) ?>
-                        </p>
+    <div class="book-list--mobile">
+        <?php if (!empty($books)): ?>
+            <?php foreach ($books as $book): ?>
+                <div class="book-list-row book-list-row--mobile">
+                    <div class="book-list-content">
+                        <div class="book-list-image">
+                            <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
+                        </div>
+
+                        <div class="book-list-details">
+                            <p class="book-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="book-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                            <p class="book-list-flag flag <?= getAvailabilityClass($book->isAvailable()) ?>">
+                                <?= getAvailabilityText($book->isAvailable()) ?>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="book-list-description">
+                        <p class="text-italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
+                    </div>
+
+                    <div class="book-list-actions">
+                        <a class="text-underline" href="index.php?action=editBook&id=<?= htmlspecialchars($book->getId()) ?>"
+                            aria-label="Éditer le livre <?= htmlspecialchars($book->getTitle()) ?>">Éditer</a>
+
+                        <a class="text-underline link-remove" href="index.php?action=deleteBook&id=<?= htmlspecialchars($book->getId()) ?>"
+                            aria-label="Supprimer le livre <?= htmlspecialchars($book->getTitle()) ?>"
+                            <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                     </div>
                 </div>
-                <!-- Description de la card -->
-                <p class="card-list-details"><?= htmlspecialchars($book->getDescription()) ?></p>
-                <!-- Action de la card -->
-                <div class="card-list-actions">
-                    <a class="edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
-                    <a class="supr" href="index.php?action=deleteBook&id=<?= $book->getId() ?>"
-                        <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
-
 </section>
 
 <!-- Modale pour l'upload de l'image -->

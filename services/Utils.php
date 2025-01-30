@@ -74,4 +74,26 @@ class Utils
     {
         return "onclick=\"return confirm('$message');\"";
     }
+
+    public static function formatDuration(DateTime $date): string
+    {
+        $now = new DateTime();
+        $interval = $now->diff($date);
+
+        $duration = "";
+
+        if ($interval->y > 0) {
+            $duration .= $interval->y . " ans ";
+        }
+
+        if ($interval->m > 0) {
+            $duration .= $interval->m . " mois ";
+        }
+
+        if ($interval->d > 0) {
+            $duration .= $interval->d . " jours";
+        }
+
+        return trim($duration);
+    }
 }

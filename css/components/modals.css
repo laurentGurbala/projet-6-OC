@@ -1,0 +1,58 @@
+/* components/modals.css */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: var(--font-text);
+    color: var(--text-color);
+}
+
+.modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 50%;
+    position: relative;
+}
+
+.modal-title {
+    font-family: var(--font-title);
+    color: var(--title-color);
+    font-size: var(--font-size-title-small);
+    margin-bottom: 1rem;
+}
+
+.modal .form-container {
+    gap: 2rem;
+}
+
+.close {
+    color: var(--secondary-text-color);
+    position: absolute;
+    right: 20px;
+    top: 0;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        font-size: var(--font-size-text-small);
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal-title {
+        font-size: 22px;
+    }
+}

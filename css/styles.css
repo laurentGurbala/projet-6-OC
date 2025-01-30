@@ -2,37 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
 /* Import CSS */
-@import "./reset.css";
-@import "./base.css";
-@import "./header.css";
-@import "./footer.css";
-@import "./formulaire.css";
-@import "./homepage.css";
-@import "./account.css";
-@import "./editBook.css";
-@import "./books.css";
-@import "./singlePage.css";
-@import "./publicAccount.css";
-@import "./utilities.css";
-
-/* Variables */
-:root {
-    --color-bg-primary: #F5F3EF;
-    --color-bg-secondary: #FAF9F7;
-    --color-bg-white: white;
-
-    --bg-btn-primary: #00AC66;
-    --bg-btn-hover: #006D41;
-    --bg-btn-alt: #F5F3EF;
-
-    --color-font-primary: #292929;
-    --color-font-secondary: #000;
-    --color-font-tertiaire: #a6a6a6;
-    --color-font-danger: #ac0000;
-
-    --font-family-text: "Inter", serif;
-    --font-family-title: "Playfair", serif;
-
-    --font-weight-primary: 400;
-    --font-weight-secondary: 300;
-}
+@import "./settings/color.css";
+@import "./settings/typography.css";
+@import "./generic/reset.css";
+@import "./generic/normalize.css";
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/formulaires.css";
+@import "./components/profil.css";
+@import "./components/bookList.css";
+@import "./components/flags.css";
+@import "./components/modals.css";
+@import "./layouts/container.css";
+@import "./layouts/header.css";
+@import "./layouts/sections.css";
+@import "./layouts/footer.css";
+@import "./pages/homepage.css";
+@import "./pages/auth.css";
+@import "./pages/listBooks.css";
+@import "./pages/singlePage.css";
+@import "./pages/account.css";
+@import "./pages/edit.css";
+@import "./utilities/utilities.css";

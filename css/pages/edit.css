@@ -1,13 +1,9 @@
-.edit-container {
-    padding: 2.5rem 9.375rem 9.375rem;
-}
-
 .edit-back {
     display: block;
     margin-bottom: 1.5rem;
 }
 
-.edit-title {
+.edit-container .title-primary {
     margin-bottom: 1.5rem;
 }
 
@@ -16,6 +12,11 @@
     padding: 3.5rem;
     background: white;
     border-radius: 20px;
+}
+
+.edit-subtitle {
+    font-size: var(--font-size-text-small);
+    margin-bottom: 10px;
 }
 
 .edit-image img {
@@ -36,12 +37,6 @@
     margin-left: clamp(2rem, 6.2vw, 7rem);
 }
 
-.edit-form input,
-.edit-textarea,
-.edit-form select {
-    background: #EDF2F6;
-}
-
 .edit-textarea {
     width: 100%;
     height: 24rem;
@@ -54,6 +49,7 @@
 }
 
 .edit-form select {
+    font-size: var(--font-size-text-small);
     margin-bottom: 44px;
 }
 
@@ -77,9 +73,6 @@
 }
 
 @media (max-width: 768px) {
-    .edit-container {
-        padding: 3.4rem 0 5rem;
-    }
 
     .edit-title,
     .edit-back {

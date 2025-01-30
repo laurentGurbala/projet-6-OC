@@ -1,40 +1,19 @@
 <?php
 
 /**
- * Affihche la page public d'un compte utilisateur
+ * Affiche la page public d'un compte utilisateur
  */
-function formatDuration(DateTime $date): string
-{
-    $now = new DateTime();
-    $interval = $now->diff($date);
-
-    $duration = "";
-
-    if ($interval->y > 0) {
-        $duration .= $interval->y . " ans ";
-    }
-
-    if ($interval->m > 0) {
-        $duration .= $interval->m . " mois ";
-    }
-
-    if ($interval->d > 0) {
-        $duration .= $interval->d . " jours";
-    }
-
-    return trim($duration);
-}
 ?>
 
 
 <div class="public-container">
     <!-- Profil -->
-    <section class="public-profil">
+    <section class="profil">
         <img src="<?= htmlspecialchars($owner->getProfileImage()) ?>" alt="" class="profil-image">
         <div class="separator"></div>
-        <h1 class="title-primary"><?= htmlspecialchars($owner->getLogin()) ?></h1>
-        <p class="profil-date">Membre depuis <?= formatDuration($owner->getCreatedAt()) ?></p>
-        <p class="profil-library">BIBLIOTHEQUE</p>
+        <h1 class="profil-title"><?= htmlspecialchars($owner->getLogin()) ?></h1>
+        <p class="profil-date">Membre depuis <?= Utils::formatDuration($owner->getCreatedAt()) ?></p>
+        <p class="profil-library">bibliotheque</p>
         <div class="profil-nb-book">
             <img src="./images/svg/book.svg" alt="logo de 2 livres">
             <p><?= $bookCount ?> livres</p>
@@ -43,37 +22,41 @@ function formatDuration(DateTime $date): string
     </section>
 
     <!-- Liste des livres -->
-    <div class="public-list">
+    <div class="book-list">
         <?php if (!empty($books)): ?>
             <!-- En-tête -->
-            <div class="list-header">
-                <div class="list-cell">
+            <div class="book-list-header">
+                <div class="book-list-cell">
                     <p>photo</p>
                 </div>
-                <div class="list-cell">
+                <div class="book-list-cell">
                     <p>Titre</p>
                 </div>
-                <div class="list-cell">
+                <div class="book-list-cell">
                     <p>Auteur</p>
                 </div>
-                <div class="list-cell">
+                <div class="book-list-cell">
                     <p>Description</p>
                 </div>
             </div>
 
+            <!-- Row -->
             <?php foreach ($books as $book): ?>
-                <div class="list-row">
-                    <div class="list-row-header">
-                        <div class="list-row-image">
+                <div class="book-list-row">
+                    <div class="book-list-content">
+                        <div class="book-list-image">
                             <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
                         </div>
-                        <div class="list-row-details">
-                            <p><?= htmlspecialchars($book->getTitle()) ?></p>
-                            <p><?= htmlspecialchars($book->getAuthor()) ?></p>
+
+                        <div class="book-list-details">
+                            <p class="book-list-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="book-list-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
                         </div>
+
                     </div>
-                    <div class="list-row-description">
-                        <p class="italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
+
+                    <div class="book-list-description">
+                        <p class="text-italic"><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

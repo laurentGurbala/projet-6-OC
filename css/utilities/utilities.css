@@ -1,0 +1,41 @@
+/* utilities/utilities.css */
+
+.text-mark {
+    color: var(--secondary-text-color);
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: var(--error-text-color);
+    margin-bottom: 20px;
+}
+
+.link-remove {
+    color: #CB2D2D;
+}
+
+.is-none {
+    display: none;
+}
+
+.separator {
+    width: 100%;
+    max-width: 242px;
+    height: 1px;
+    background: var(--background-primary-color);
+    margin: 48px auto;
+}
+
+.separator-small {
+    width: 27px;
+    height: 1px;
+    background: var(--background-primary-color);
+    margin: 32px 0;
+}

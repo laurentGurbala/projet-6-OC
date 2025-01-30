@@ -1,0 +1,58 @@
+/* components/cards.css */
+
+.card {
+    background: var(--card-background-color);
+    width: 12.5rem;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.25rem 0.875rem;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+}
+
+.card-author {
+    font-size: var(--font-size-text-small);
+    margin-bottom: 1.375rem;
+}
+
+.card-meta {
+    font-size: 0.625rem;
+    margin-bottom: 3px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 10rem;
+    }
+
+    .card-image {
+        height: 160px;
+    }
+
+    .card-content {
+        padding: 1rem 0.75rem 1.125rem;
+    }
+
+    .card-title {
+        font-size: 0.8125rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .card-author {
+        font-size: 0.7rem;
+        margin-bottom: 1.125rem;
+    }
+
+    .card-meta {
+        font-size: 0.5rem;
+    }
+}
