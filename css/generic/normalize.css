@@ -1,0 +1,19 @@
+/* generic/normalize.css */
+
+body {
+    background: var(--background-primary-color);
+    font-family: var(--font-text);
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: var(--line-height-text);
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

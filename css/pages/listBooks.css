@@ -1,0 +1,38 @@
+/* pages/listBooks.css */
+
+.books-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 72px;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding-left: 33px;
+    outline: none;
+}
+
+.search-container i {
+    position: absolute;
+    left: 10px;
+    top: 20%;
+    color: var(--secondary-text-color);
+}
+
+.books-search::placeholder {
+    color: var(--secondary-text-color);
+}
+
+@media (max-width: 1200px) {
+    .books-header {
+        flex-direction: column;
+        gap: 28px;
+        margin-bottom: 40px;
+    }
+}

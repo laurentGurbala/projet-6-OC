@@ -1,8 +1,0 @@
-.is-none {
-    display: none;
-}
-
-.error-message {
-    color: var(--color-font-danger);
-    margin-bottom: 20px;
-}

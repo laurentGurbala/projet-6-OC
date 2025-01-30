@@ -11,7 +11,7 @@
 </div>
 
 <div class="single-container">
-    <img class="single-img" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="La photo de couverture du livre <?= htmlspecialchars($book->getTitle()) ?>">
+    <img class="single-image" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="La photo de couverture du livre <?= htmlspecialchars($book->getTitle()) ?>">
 
     <section class="single-section">
         <div class="single-content">
@@ -20,7 +20,7 @@
             <!-- Autheur -->
             <p class="text-mark">par <?= htmlspecialchars($book->getAuthor()) ?></p>
             <!-- Séparateur -->
-            <div class="separator"></div>
+            <div class="separator-small"></div>
             <!-- Descrition -->
             <p class="single-subtitle">description</p>
             <p class="single-description">

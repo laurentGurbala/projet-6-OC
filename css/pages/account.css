@@ -1,0 +1,49 @@
+.account-title {
+    font-size: 1.625rem;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+    .account-title {
+        font-size: 1.875rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.account-flex {
+    display: flex;
+    gap: 2rem;
+}
+
+.account-flex .profil {
+    flex: 1 1 547px;
+    height: 508px;
+    padding: 0;
+}
+
+.infos {
+    flex: 1 1 555px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 508px;
+    margin-bottom: 32px;
+}
+
+.infos-container {
+    width: 100%;
+    max-width: 322px;
+}
+
+.infos-title {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+    .infos {
+        padding: 2.5rem 2rem;
+    }
+}

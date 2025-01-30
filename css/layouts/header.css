@@ -1,22 +1,24 @@
 header {
     display: flex;
-    padding: 1rem 0px;
-    font-size: 0.875rem;
+    padding: 1rem 0;
+    background: var(--background-primary-color);
 }
 
 .header-container {
     flex: 1;
+    padding-left: 150px
 }
 
 .main-menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .logo {
     display: block;
     width: 138px;
+    height: auto;
 }
 
 .hamburger-menu {
@@ -43,12 +45,12 @@ header {
         flex-direction: column;
     }
 
-    .logo {
-        width: 78px;
+    .header-container {
+        padding-left: 0;
     }
 
-    .main-menu {
-        justify-content: space-between;
+    .logo {
+        width: 78px;
     }
 
     .mobile-menu ul {
@@ -62,6 +64,7 @@ header {
     .mobile-menu li {
         display: block;
         width: 100%;
+        text-align: center;
     }
 
     .user-actions {

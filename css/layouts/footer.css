@@ -1,5 +1,7 @@
+/* layouts/footer.css */
+
 footer {
-    background: var(--color-bg-white);
+    background: var(--section-background-color);
     display: flex;
     justify-content: flex-end;
     align-items: center;

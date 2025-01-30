@@ -6,31 +6,31 @@
 
 ?>
 
-<div class="container">
-    <div class="form-container">
+<div class="auth-container">
+    <div class="auth-form-container">
         <div>
-            <h1 class="title-primary">Connexion</h1>
-            <form action="index.php?action=loginUser" method="post">
+            <h1 class="auth-form-title title-primary">Connexion</h1>
+            <form class="auth-form" action="index.php?action=loginUser" method="post">
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email">Adresse email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input class="input-field" type="email" id="email" name="email" required>
                 </div>
                 <!-- Mot de passe -->
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" required>
+                    <input class="input-field" type="password" id="password" name="password" required>
                 </div>
                 <?php if (!empty($error)): ?>
                     <div class="error-message" role="alert">
                         <?= htmlspecialchars($error) ?>
                     </div>
                 <?php endif; ?>
-                <button class="btn btn-primary" type="submit">S'inscrire</button>
+                <button class="btn btn-primary btn-large" type="submit">S'inscrire</button>
             </form>
             <!-- Pas de compte -->
-            <div class="link">
-                <p>Pas de compte ? <a href="index.php?action=register">Inscrivez-vous</a></p>
+            <div class="auth-link">
+                <p>Pas de compte ? <a class="text-underline" href="index.php?action=register">Inscrivez-vous</a></p>
             </div>
         </div>
     </div>

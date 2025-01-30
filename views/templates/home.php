@@ -25,7 +25,7 @@
 </div>
 
 <!-- Dernière ajouts -->
-<section class="ajout">
+<section class="section-books">
     <!-- Titre -->
     <h2 class="title-secondary">Les derniers livres ajoutés</h2>
 
@@ -33,15 +33,15 @@
         <p>Aucun livre disponible pour le moment.</p>
     <?php else: ?>
         <!-- list -->
-        <div class="ajout-list">
+        <div class="card-list">
             <?php foreach ($books as $book): ?>
-                <div class="card-book">
+                <div class="card">
                     <a href="index.php?action=single&bookId=<?= htmlspecialchars($book->getId()) ?>">
-                        <img class="card-book-img" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
-                        <div class="card-book-details">
-                            <p class="card-book-title"><?= htmlspecialchars($book->getTitle()) ?></p>
-                            <p class="card-book-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                            <p class="card-book-pseudo text-mark italic">Vendu par <?= htmlspecialchars($book->getSellerPseudo()) ?></p>
+                        <img class="card-image" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
+                        <div class="card-content">
+                            <p class="card-title"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="card-author text-mark"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                            <p class="card-meta text-mark text-italic">Vendu par <?= htmlspecialchars($book->getSellerPseudo()) ?></p>
                         </div>
                     </a>
                 </div>
@@ -54,47 +54,47 @@
 </section>
 
 <!-- Comment ça marche -->
-<section class="fonctionnement">
+<section class="section-process">
     <!--Titre  -->
     <h2 class="title-secondary">Comment ça marche ?</h2>
 
     <p>Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
 
     <!-- list -->
-    <div class="fonctionnement-list">
+    <div class="steps-container">
         <!-- step 1 -->
-        <div class="fonctionnement-step">
+        <div class="step">
             <p>Inscrivez-vous gratuitement sur<br> notre plateforme.</p>
         </div>
 
         <!-- step 2 -->
-        <div class="fonctionnement-step">
+        <div class="step">
             <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
         </div>
 
         <!-- step 3 -->
-        <div class="fonctionnement-step">
+        <div class="step">
             <p>Parcourez les livres disponibles chez d'autres membres.</p>
         </div>
 
         <!-- step 4 -->
-        <div class="fonctionnement-step">
+        <div class="step">
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </div>
     </div>
 
     <!-- button -->
-    <a href="#" class="btn btn-alt">Voir tous les livres</a>
+    <a href="index.php?action=listBooks" class="btn btn-alt">Voir tous les livres</a>
 </section>
 
 <!-- img -->
-<div class="separator-img" aria-hidden="true"></div>
+<div class="image-separator" aria-hidden="true"></div>
 
 <!-- Nos valeurs -->
-<section class="valeurs">
+<section class="section-values">
     <div>
         <h2 class="title-secondary">Nos valeurs</h2>
-        <div class="valeurs-text">
+        <div class="values-text">
             <p>
                 Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos
                 valeurs sont ancrées dans notre passion pour les
@@ -116,6 +116,6 @@
             </p>
         </div>
         <p class="text-mark">L'équipe Tom Troc</p>
-        <img src="./images/svg/heart.svg" alt="Une signature en forme de coeur">
+        <img class="values-image" src="./images/svg/heart.svg" alt="Une signature en forme de coeur">
     </div>
 </section>
