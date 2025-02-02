@@ -1,0 +1,11 @@
+/* components/messaging.css */
+
+.messaging {
+    width: 308px;
+    background: var(--section-background-color);
+    min-height: 100vh;
+}
+
+.messaging-header {
+    padding: 55px 34px 27px;
+}

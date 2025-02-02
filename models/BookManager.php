@@ -58,7 +58,7 @@ class BookManager extends AbstractEntityManager
         FROM book b
         JOIN user u ON b.user_id = u.id
         WHERE b.title LIKE :title
-        ORDER BY b.created_at DESC";
+        ORDER BY b.title";
 
         $params = [":title" => "%" . $title . "%"];
         $result = $this->db->query($sql, $params);

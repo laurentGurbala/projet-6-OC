@@ -57,7 +57,7 @@
                 </nav>
             </div>
             <div class="user-actions">
-                <a class="link" href="#" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
+                <a class="link" href="index.php?action=message" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
                 <a class="link" href="index.php?action=account" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
                 <a class="link" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
             </div>

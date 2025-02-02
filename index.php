@@ -105,6 +105,13 @@ try {
             $bookController->deleteBook();
             break;
 
+        case "message":
+            Utils::checkIfUserIsConnected();
+            // Affihce la page de message
+            $messageController = new MessageController();
+            $messageController->showMessaging();
+            break;
+
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");
