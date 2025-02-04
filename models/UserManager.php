@@ -51,20 +51,7 @@ class UserManager extends AbstractEntityManager
         $query = $this->db->query($sql, ["email" => $email]);
         $result = $query->fetch();
 
-        // Si aucun utilisateur n'est trouvé
-        if (!$result) {
-            return null;
-        }
-
-        // Création d'une instance User
-        $user = new User();
-        $user->setId($result['id']);
-        $user->setLogin($result['login']);
-        $user->setEmail($result['email']);
-        $user->setPassword($result['password']);
-        $user->setCreatedAt(new DateTime($result["created_at"]));
-
-        return $user;
+        return $result ? $this->mapToUser($result) : null;
     }
 
     /**
@@ -102,17 +89,28 @@ class UserManager extends AbstractEntityManager
         $query = $this->db->query($sql, ["id" => $userId]);
         $result = $query->fetch();
 
-        if ($result) {
-            $user = new User();
-            $user->setId($result["id"]);
-            $user->setLogin($result["login"]);
-            $user->setEmail($result["email"]);
-            $user->setPassword($result["password"]);
-            $user->setCreatedAt(new DateTime($result["created_at"]));
-            $user->setProfileImage($result["profile_image"]);
-            return $user;
-        }
+        return $result ? $this->mapToUser($result) : null;
+    }
 
-        return null;
+    public function getUsersByIds(array $userIds): array
+    {
+        $users = [];
+        foreach ($userIds as $userId) {
+            $users[] = $this->getUserById($userId);
+        }
+        return $users;
+    }
+
+    private function mapToUser(array $data): User
+    {
+        $user = new User();
+        $user->setId($data["id"]);
+        $user->setLogin($data["login"]);
+        $user->setEmail($data["email"]);
+        $user->setPassword($data["password"]);
+        $user->setCreatedAt(new DateTime($data["created_at"]));
+        $user->setProfileImage($data["profile_image"]);
+
+        return $user;
     }
 }

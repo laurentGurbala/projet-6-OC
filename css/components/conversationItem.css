@@ -1,0 +1,41 @@
+.conversation-item {
+    padding: 18px 34px;
+    display: flex;
+}
+
+.conversation-item--active {
+    background: var(--card-background-color);
+}
+
+.conversation-item:hover {
+    background: var(--card-background-color);
+}
+
+.conversation-item__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+
+.conversation-item__content {
+    padding: 3px 12px;
+    width: 190px;
+}
+
+.conversation-item__details {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-text-small);
+}
+
+.conversation-item__name {
+    margin-bottom: 7px;
+}
+
+.conversation-item__message {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
