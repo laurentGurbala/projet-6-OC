@@ -29,13 +29,20 @@ class MessageController
         // Récupère les derniers messages
         $lastMessages = $messageManager->getLastMessagesByUser($userId, $contacts, $messages);
 
+        // Récupère les messages de la conversation active
+        $conversationMessages = $messageManager->getMessagesByConversation($userId, $conversationId);
+
+        $currentContact = $userManager->getUserById($conversationId);
+
         // Crée la vue des messages
         $view = new View("Messagerie");
         $view->render("messaging", [
             "messages" => $messages,
             "contacts" => $contacts,
             "lastMessages" => $lastMessages,
-            "conversationId" => $conversationId
+            "conversationId" => $conversationId,
+            "conversationMessages" => $conversationMessages,
+            "currentContact" => $currentContact
         ]);
     }
 }

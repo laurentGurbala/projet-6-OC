@@ -1,0 +1,68 @@
+.conversation {
+    padding: 35px 44px;
+    padding-right: 150px;
+    flex: 1 1 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation-profil {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 1rem;
+}
+
+.conversation-profil__image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.conversation-profil__name {
+    font-size: var(--font-size-text-small);
+    font-weight: 600;
+}
+
+.conversation-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+}
+
+.message-content {
+    padding: 10px;
+    margin-bottom: 25px;
+    border-radius: 3px;
+}
+
+.message-content.sent {
+    background-color: #EDF2F6;
+}
+
+.message-content.received {
+    background: white;
+}
+
+.timestamp.sent,
+.message.sent {
+    align-self: flex-end;
+}
+
+.timestamp.received,
+.message.received {
+    align-self: flex-start;
+}
+
+.timestamp {
+    margin-bottom: 5px;
+}

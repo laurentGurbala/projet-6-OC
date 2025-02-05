@@ -4,7 +4,7 @@
  * La vue des messages
  */
 
-function formatMessageDate(DateTime $date): string
+function formatConversationDate(DateTime $date): string
 {
     $today = new DateTime('today');
 
@@ -13,6 +13,16 @@ function formatMessageDate(DateTime $date): string
     } else {
         return $date->format("d.m");
     }
+}
+
+function getMessageClass($message): string
+{
+    return $message->getSenderId() === $_SESSION["user_id"] ? 'sent' : 'received';
+}
+
+function formatMessageDate(DateTime $dateTime): string
+{
+    return $dateTime->format("d.m H:i");
 }
 ?>
 
@@ -35,7 +45,7 @@ function formatMessageDate(DateTime $date): string
                         <div class="conversation-item__content">
                             <div class="conversation-item__details">
                                 <p class="conversation-item__name"><?= htmlspecialchars($contact->getLogin()) ?></p>
-                                <p class="conversation-item__date"><?= formatMessageDate($lastMessage->getSentAt()) ?></p>
+                                <p class="conversation-item__date"><?= formatConversationDate($lastMessage->getSentAt()) ?></p>
                             </div>
                             <p class="conversation-item__message text-mark"><?= htmlspecialchars($lastMessage->getContent()) ?></p>
                         </div>
@@ -45,5 +55,23 @@ function formatMessageDate(DateTime $date): string
         </div>
 
     </section>
-    <div class="conversation"></div>
+
+    <!-- Aside des messages -->
+    <div class="conversation">
+        <!-- Profil du contact -->
+        <div class="conversation-profil">
+            <img class="conversation-profil__image" src="<?= htmlspecialchars($currentContact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($currentContact->getLogin()) ?>">
+            <p class="conversation-profil__name"><?= htmlspecialchars($currentContact->getLogin()) ?></p>
+        </div>
+
+        <!-- Conteneur des messages -->
+        <div class="conversation-messages">
+            <?php foreach ($conversationMessages as $message): ?>
+                <div class="message <?= getMessageClass($message) ?>">
+                    <span class="timestamp text-mark <?= getMessageClass($message) ?>"><?= formatMessageDate($message->getSentAt()) ?></span>
+                    <p class="message-content <?= getMessageClass($message) ?>"><?= htmlspecialchars($message->getContent()) ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </div>

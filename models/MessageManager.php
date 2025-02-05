@@ -66,6 +66,22 @@ class MessageManager extends AbstractEntityManager
         return $lastMessages;
     }
 
+    public function getMessagesByConversation(int $userId, int $contactId): array
+    {
+        $sql = "SELECT * FROM message
+            WHERE (sender_id = :userId AND receiver_id = :contactId)
+            OR (sender_id = :contactId AND receiver_id = :userId)
+            ORDER BY sent_at ASC";
+
+
+        $result = $this->db->query($sql, ["userId" => $userId, "contactId" => $contactId]);
+        $messages = [];
+
+        while ($message = $result->fetch()) {
+            $messages[] = $this->mapToMessage($message);
+        }
+        return $messages;
+    }
 
     private function mapToMessage(array $data): Message
     {

@@ -1,7 +1,7 @@
 /* components/messaging.css */
 
 .messaging {
-    width: 308px;
+    flex: 0 0 308px;
     background: var(--section-background-color);
     min-height: 100vh;
 }

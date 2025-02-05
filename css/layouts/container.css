@@ -43,3 +43,7 @@
         padding: 54px 0 80px;
     }
 }
+
+.messaging-container {
+    display: flex;
+}
