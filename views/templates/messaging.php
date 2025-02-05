@@ -73,5 +73,12 @@ function formatMessageDate(DateTime $dateTime): string
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <form action="#" method="POST">
+            <div class="form-message">
+                <input class="input-field" type="text" name="message" id="message">
+                <button class="btn btn-primary" type="submit">Envoyer</button>
+            </div>
+        </form>
     </div>
 </div>

@@ -23,3 +23,10 @@
     font-size: var(--font-size-text-small);
     margin-bottom: 10px;
 }
+
+.form-message {
+    display: flex;
+
+    align-items: flex-start;
+    gap: 21px;
+}
