@@ -114,7 +114,9 @@
 }
 
 .single-container .btn {
+    display: block;
     width: 100%;
+    max-width: 322px;
 }
 
 @media (max-width: 768px) {
@@ -147,5 +149,9 @@
 
     .single-description {
         margin-bottom: 2.5rem;
+    }
+
+    .single-container .btn {
+        max-width: 100%;
     }
 }
