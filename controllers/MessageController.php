@@ -6,6 +6,13 @@
 class MessageController
 {
 
+    /**
+     * Affiche la messagerie de l'utilisateur connecté.
+     * 
+     * Cette méthode récupère les messages de l'utilisateur, identifie ses contacts, 
+     * détermine la conversation active, charge les messages correspondants et 
+     * affiche la vue de la messagerie.
+     */
     public function showMessaging(): void
     {
         $userId = $_SESSION["user_id"];
@@ -13,25 +20,23 @@ class MessageController
         $messageManager = new MessageManager();
         $userManager = new UserManager();
 
-        // Récupérer les messages
+        // Récupérer les messages et les contacts
         $messages = $messageManager->getAllMessagesByUser($userId);
-
-        // Extraire les ids des contacts
         $contactsIds = $messageManager->getUserContacts($userId, $messages);
 
+        // Déterminer l'ID de la conversation active
+        $conversationId = $this->determineConversationId($contactsIds);
 
-        // Récupère les users correspondants
+        // Charger les contacts et vérifier la conversation active
         $contacts = $userManager->getUsersByIds($contactsIds);
-
-        // Id de la conversation
-        $conversationId = Utils::request("conversationId", $contacts[0]->getId());
+        $conversationId = $this->ensureValidConversationId($conversationId, $contacts);
 
         // Récupère les derniers messages
         $lastMessages = $messageManager->getLastMessagesByUser($userId, $contacts, $messages);
 
-        // Récupère les messages de la conversation active
+        // Récupérer les derniers messages et ceux de la conversation active
+        $lastMessages = $messageManager->getLastMessagesByUser($userId, $contacts, $messages);
         $conversationMessages = $messageManager->getMessagesByConversation($userId, $conversationId);
-
         $currentContact = $userManager->getUserById($conversationId);
 
         // Crée la vue des messages
@@ -46,6 +51,9 @@ class MessageController
         ]);
     }
 
+    /**
+     * Gère l'envoi d'un message et sa validation.
+     */
     public function sendMessage(): void
     {
         try {
@@ -58,7 +66,6 @@ class MessageController
             }
 
             // Récupère les données du post
-            $receiverId = Utils::request("receiverId");
             $message = Utils::request("message");
 
             // Sanitiser les données
@@ -80,5 +87,38 @@ class MessageController
         } catch (ValidationException) {
             Utils::redirect("message");
         }
+    }
+
+    /**
+     * Détermine l'ID de la conversation active en fonction des paramètres reçus.
+     *
+     * @param array $contactsIds Liste des contacts existants.
+     * @return int L'ID de la conversation active ou -1 si non défini.
+     */
+    private function determineConversationId(array &$contactsIds): int
+    {
+        $conversationId = Utils::request("conversationId", -1);
+
+        if ($conversationId === -1) {
+            $conversationId = Utils::request("contactId", -1);
+        }
+
+        if ($conversationId > -1 && !in_array($conversationId, $contactsIds)) {
+            $contactsIds[] = $conversationId;
+        }
+
+        return $conversationId;
+    }
+
+    /**
+     * Vérifie et assigne un ID de conversation valide.
+     *
+     * @param int $conversationId L'ID de la conversation potentielle.
+     * @param array $contacts Liste des contacts.
+     * @return int Un ID valide de conversation.
+     */
+    private function ensureValidConversationId(int $conversationId, array $contacts): int
+    {
+        return ($conversationId === -1 && !empty($contacts)) ? $contacts[0]->getId() : $conversationId;
     }
 }

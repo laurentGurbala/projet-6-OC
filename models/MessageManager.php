@@ -2,6 +2,12 @@
 
 class MessageManager extends AbstractEntityManager
 {
+    /**
+     * Récupère tous les messages envoyés ou reçus par un utilisateur.
+     *
+     * @param int $userId L'ID de l'utilisateur.
+     * @return array Liste des messages sous forme d'objets Message.
+     */
     public function getAllMessagesByUser(int $userId): array
     {
         $sql = "SELECT * FROM message
@@ -18,6 +24,13 @@ class MessageManager extends AbstractEntityManager
         return $messages;
     }
 
+    /**
+     * Récupère la liste des contacts avec qui un utilisateur a échangé des messages.
+     *
+     * @param int $userId L'ID de l'utilisateur.
+     * @param array $messages Liste des messages de l'utilisateur.
+     * @return array Liste des IDs des contacts uniques.
+     */
     public function getUserContacts(int $userId, array $messages): array
     {
         $contacts = [];
@@ -39,6 +52,14 @@ class MessageManager extends AbstractEntityManager
         return array_unique($contacts);
     }
 
+    /**
+     * Récupère le dernier message échangé avec chaque contact.
+     *
+     * @param int $userId L'ID de l'utilisateur.
+     * @param array $contacts Liste des contacts de l'utilisateur.
+     * @param array $messages Liste des messages de l'utilisateur.
+     * @return array Tableau associatif [contactId => dernier message].
+     */
     public function getLastMessagesByUser(int $userId, array $contacts, array $messages): array
     {
         $lastMessages = [];
@@ -66,6 +87,13 @@ class MessageManager extends AbstractEntityManager
         return $lastMessages;
     }
 
+    /**
+     * Récupère tous les messages échangés entre l'utilisateur et un contact spécifique.
+     *
+     * @param int $userId L'ID de l'utilisateur.
+     * @param int $contactId L'ID du contact.
+     * @return array Liste des messages triés par ordre chronologique.
+     */
     public function getMessagesByConversation(int $userId, int $contactId): array
     {
         $sql = "SELECT * FROM message
@@ -83,6 +111,13 @@ class MessageManager extends AbstractEntityManager
         return $messages;
     }
 
+    /**
+     * Envoie un message d'un utilisateur à un autre.
+     *
+     * @param int $senderId L'ID de l'expéditeur.
+     * @param int $receiverId L'ID du destinataire.
+     * @param string $content Contenu du message.
+     */
     public function sendMessage(int $senderId, int $receiverId, string $content): void
     {
         $sql = "INSERT INTO message (sender_id, receiver_id, content, sent_at)
@@ -95,6 +130,12 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Convertit un tableau de données en objet Message.
+     *
+     * @param array $data Données du message issues de la base de données.
+     * @return Message Instance de l'objet Message.
+     */
     private function mapToMessage(array $data): Message
     {
         $message = new Message();

@@ -37,20 +37,22 @@ function formatMessageDate(DateTime $dateTime): string
         <!-- Liste des conversations -->
         <div class="conversation-container">
             <?php foreach ($contacts as $contact):
-                $lastMessage = $lastMessages[$contact->getId()];
+                $lastMessage = $lastMessages[$contact->getId()] ?? null;
             ?>
-                <a href="index.php?action=message&conversationId=<?= $contact->getId() ?>">
-                    <div class="conversation-item <?= $contact->getId() == $conversationId ? "conversation-item--active" : "" ?>">
-                        <img class="conversation-item__avatar" src="<?= htmlspecialchars($contact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($contact->getLogin()) ?>">
-                        <div class="conversation-item__content">
-                            <div class="conversation-item__details">
-                                <p class="conversation-item__name"><?= htmlspecialchars($contact->getLogin()) ?></p>
-                                <p class="conversation-item__date"><?= formatConversationDate($lastMessage->getSentAt()) ?></p>
+                <?php if ($lastMessage): ?>
+                    <a href="index.php?action=message&conversationId=<?= $contact->getId() ?>">
+                        <div class="conversation-item <?= $contact->getId() == $conversationId ? "conversation-item--active" : "" ?>">
+                            <img class="conversation-item__avatar" src="<?= htmlspecialchars($contact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($contact->getLogin()) ?>">
+                            <div class="conversation-item__content">
+                                <div class="conversation-item__details">
+                                    <p class="conversation-item__name"><?= htmlspecialchars($contact->getLogin()) ?></p>
+                                    <p class="conversation-item__date"><?= formatConversationDate($lastMessage->getSentAt()) ?></p>
+                                </div>
+                                <p class="conversation-item__message text-mark"><?= htmlspecialchars($lastMessage->getContent()) ?></p>
                             </div>
-                            <p class="conversation-item__message text-mark"><?= htmlspecialchars($lastMessage->getContent()) ?></p>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
 
@@ -75,8 +77,8 @@ function formatMessageDate(DateTime $dateTime): string
         </div>
 
         <!-- Formulaire -->
-        <form action="index.php?action=sendMessage&conversationId=<?= $conversationId ?>" method="POST">
-            <input type="hidden" name="receiver_id" value="<?= $currentContact->getId() ?>">
+        <form action="index.php?action=sendMessage" method="POST">
+            <input type="hidden" name="conversationId" value="<?= $conversationId ?>">
             <div class="form-message">
                 <input class="input-field" type="text" name="message" id="message">
                 <button class="btn btn-primary" type="submit">Envoyer</button>
