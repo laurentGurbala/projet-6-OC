@@ -83,6 +83,18 @@ class MessageManager extends AbstractEntityManager
         return $messages;
     }
 
+    public function sendMessage(int $senderId, int $receiverId, string $content): void
+    {
+        $sql = "INSERT INTO message (sender_id, receiver_id, content, sent_at)
+        VALUES (:sender_id, :receiver_id, :content, NOW())";
+
+        $this->db->query($sql, [
+            "sender_id" => $senderId,
+            "receiver_id" => $receiverId,
+            "content" => $content
+        ]);
+    }
+
     private function mapToMessage(array $data): Message
     {
         $message = new Message();

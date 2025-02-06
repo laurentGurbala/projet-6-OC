@@ -112,6 +112,13 @@ try {
             $messageController->showMessaging();
             break;
 
+        case "sendMessage":
+            Utils::checkIfUserIsConnected();
+            // Traite l'envoi du message
+            $messageController = new MessageController();
+            $messageController->sendMessage();
+            break;
+
         default:
             // Gère les actions non définies
             throw new Exception("Page non trouvée.");

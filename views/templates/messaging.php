@@ -74,7 +74,9 @@ function formatMessageDate(DateTime $dateTime): string
             <?php endforeach; ?>
         </div>
 
-        <form action="#" method="POST">
+        <!-- Formulaire -->
+        <form action="index.php?action=sendMessage&conversationId=<?= $conversationId ?>" method="POST">
+            <input type="hidden" name="receiver_id" value="<?= $currentContact->getId() ?>">
             <div class="form-message">
                 <input class="input-field" type="text" name="message" id="message">
                 <button class="btn btn-primary" type="submit">Envoyer</button>
