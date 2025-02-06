@@ -31,9 +31,6 @@ class MessageController
         $contacts = $userManager->getUsersByIds($contactsIds);
         $conversationId = $this->ensureValidConversationId($conversationId, $contacts);
 
-        // Récupère les derniers messages
-        $lastMessages = $messageManager->getLastMessagesByUser($userId, $contacts, $messages);
-
         // Récupérer les derniers messages et ceux de la conversation active
         $lastMessages = $messageManager->getLastMessagesByUser($userId, $contacts, $messages);
         $conversationMessages = $messageManager->getMessagesByConversation($userId, $conversationId);
@@ -42,7 +39,6 @@ class MessageController
         // Crée la vue des messages
         $view = new View("Messagerie");
         $view->render("messaging", [
-            "messages" => $messages,
             "contacts" => $contacts,
             "lastMessages" => $lastMessages,
             "conversationId" => $conversationId,
@@ -80,7 +76,7 @@ class MessageController
 
             // Enregistrer dans la bdd
             $messageManager = new MessageManager();
-            $messageManager->sendMessage($userId, $conversationId, $messageDecoded);
+            $messageManager->save($userId, $conversationId, $messageDecoded);
 
             // Redirection
             Utils::redirect("message");
@@ -98,10 +94,6 @@ class MessageController
     private function determineConversationId(array &$contactsIds): int
     {
         $conversationId = Utils::request("conversationId", -1);
-
-        if ($conversationId === -1) {
-            $conversationId = Utils::request("contactId", -1);
-        }
 
         if ($conversationId > -1 && !in_array($conversationId, $contactsIds)) {
             $contactsIds[] = $conversationId;

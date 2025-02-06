@@ -14,7 +14,7 @@ class MessageManager extends AbstractEntityManager
         WHERE sender_id = :userId OR receiver_id = :userId
         ORDER BY sent_at DESC";
 
-        $result = $this->db->query($sql, ["userId" => $userId, "userId" => $userId]);
+        $result = $this->db->query($sql, ["userId" => $userId]);
         $messages = [];
 
         while ($message = $result->fetch()) {
@@ -118,7 +118,7 @@ class MessageManager extends AbstractEntityManager
      * @param int $receiverId L'ID du destinataire.
      * @param string $content Contenu du message.
      */
-    public function sendMessage(int $senderId, int $receiverId, string $content): void
+    public function save(int $senderId, int $receiverId, string $content): void
     {
         $sql = "INSERT INTO message (sender_id, receiver_id, content, sent_at)
         VALUES (:sender_id, :receiver_id, :content, NOW())";

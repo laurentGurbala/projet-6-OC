@@ -107,7 +107,7 @@ try {
 
         case "message":
             Utils::checkIfUserIsConnected();
-            // Affihce la page de message
+            // Affiche la page de message
             $messageController = new MessageController();
             $messageController->showMessaging();
             break;

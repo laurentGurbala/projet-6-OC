@@ -36,7 +36,9 @@
             </a>
 
 
-            <button class="btn btn-primary">Envoyer un message</button>
+            <a class="btn btn-primary" href="index.php?action=message&conversationId=<?= $owner->getId() ?>">Envoyer un message</a>
+            <div>
+            </div>
         </div>
     </section>
 </div>

@@ -18,7 +18,7 @@
             <img src="./images/svg/book.svg" alt="logo de 2 livres">
             <p><?= $bookCount ?> livres</p>
         </div>
-        <button type="button" class="btn btn-alt">Écrire un message</button>
+        <a href="index.php?action=message&conversationId=<?= $owner->getId() ?>" type="button" class="btn btn-alt">Écrire un message</a>
     </section>
 
     <!-- Liste des livres -->
