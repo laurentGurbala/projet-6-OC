@@ -8,6 +8,7 @@
  *      $content string : le contenu de la page. 
  */
 
+$nbMessage = $_SESSION["nbMessages"] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,12 @@
                 </nav>
             </div>
             <div class="user-actions">
-                <a class="link" href="index.php?action=message" aria-label="Accéder à la messagerie"><i class="fa-regular fa-comment"></i> Messagerie</a>
+                <a class="link-notify" href="index.php?action=message" aria-label="Accéder à la messagerie">
+                    <i class="fa-regular fa-comment"></i> Messagerie
+                    <?php if ($nbMessage > 0): ?>
+                        <span class="flag-notify"><?= $nbMessage ?></span>
+                    <?php endif; ?>
+                </a>
                 <a class="link" href="index.php?action=account" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
                 <a class="link" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
             </div>

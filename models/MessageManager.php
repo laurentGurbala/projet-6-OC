@@ -130,6 +130,18 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
+    public function countNewMessages(int $userId)
+    {
+        $sql = "SELECT COUNT(*) AS nb FROM message
+        WHERE receiver_id = :userId AND view = 0";
+
+        $stmt = $this->db->query($sql, ["userId" => $userId]);
+
+        $result = $stmt->fetch();
+
+        return $result["nb"] ?? 0;
+    }
+
     /**
      * Convertit un tableau de données en objet Message.
      *

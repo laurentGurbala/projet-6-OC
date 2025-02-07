@@ -85,6 +85,20 @@ class MessageController
         }
     }
 
+    public function nbNewMessages(): int
+    {
+        $nbMessage = 0;
+
+        // Vérifier que l'utilisateur est connecté
+        if (isset($_SESSION["user_id"])) {
+            // Récupération du nombre de nouveaux messages
+            $messageManager = new MessageManager();
+            $nbMessage = $messageManager->countNewMessages($_SESSION["user_id"]);
+        }
+
+        return $nbMessage;
+    }
+
     /**
      * Détermine l'ID de la conversation active en fonction des paramètres reçus.
      *

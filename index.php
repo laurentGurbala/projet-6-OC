@@ -5,6 +5,9 @@ require_once "config/autoload.php";
 
 $action = Utils::request("action", "home");
 
+$messageController = new MessageController();
+$_SESSION["nbMessages"] = $messageController->nbNewMessages();
+
 // Try catch global pour gérer les erreurs
 try {
     switch ($action) {
@@ -108,14 +111,12 @@ try {
         case "message":
             Utils::checkIfUserIsConnected();
             // Affiche la page de message
-            $messageController = new MessageController();
             $messageController->showMessaging();
             break;
 
         case "sendMessage":
             Utils::checkIfUserIsConnected();
             // Traite l'envoi du message
-            $messageController = new MessageController();
             $messageController->sendMessage();
             break;
 
