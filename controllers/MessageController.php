@@ -36,6 +36,10 @@ class MessageController
         $conversationMessages = $messageManager->getMessagesByConversation($userId, $conversationId);
         $currentContact = $userManager->getUserById($conversationId);
 
+        // Marquer les messages de cette conversation comme lus
+        $messageManager->markMessageAsRead($userId, $conversationId);
+        $_SESSION["nbMessages"] = $this->nbNewMessages();
+
         // Crée la vue des messages
         $view = new View("Messagerie");
         $view->render("messaging", [

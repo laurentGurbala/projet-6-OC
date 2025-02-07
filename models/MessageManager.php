@@ -142,6 +142,19 @@ class MessageManager extends AbstractEntityManager
         return $result["nb"] ?? 0;
     }
 
+    public function markMessageAsRead(int $userId, int $senderId): void
+    {
+        $sql = "UPDATE message SET view = 1
+        WHERE receiver_id = :userId 
+        AND sender_id = :senderId 
+        AND view = 0";
+
+        $this->db->query($sql, [
+            "userId" => $userId,
+            "senderId" => $senderId
+        ]);
+    }
+
     /**
      * Convertit un tableau de données en objet Message.
      *
