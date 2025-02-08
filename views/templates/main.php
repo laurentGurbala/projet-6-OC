@@ -9,6 +9,7 @@
  */
 
 $nbMessage = $_SESSION["nbMessages"] ?? 0;
+$action = Utils::request("action", "home");
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +40,8 @@ $nbMessage = $_SESSION["nbMessages"] ?? 0;
                     <!-- Navigation desktop -->
                     <nav class="desktop-menu" aria-label="Menu principal">
                         <ul>
-                            <li><a class="link" href="index.php">Accueil</a></li>
-                            <li><a class="link" href="index.php?action=listBooks">Nos livres à l'échange</a></li>
+                            <li><a class="link <?= ($action === 'home') ? 'link-active' : '' ?>" href="index.php">Accueil</a></li>
+                            <li><a class="link <?= ($action === 'listBooks' || $action === 'single') ? 'link-active' : '' ?>" href="index.php?action=listBooks">Nos livres à l'échange</a></li>
                         </ul>
                     </nav>
                     <!-- Icon hamburger -->
@@ -52,20 +53,20 @@ $nbMessage = $_SESSION["nbMessages"] ?? 0;
                 <!-- Navigation mobile -->
                 <nav class="mobile-menu">
                     <ul>
-                        <li><a class="link" href="index.php">Accueil</a></li>
-                        <li><a class="link" href="#">Nos livres à l'échange</a></li>
+                        <li><a class="link <?= ($action === 'home') ? 'link-active' : '' ?>" href="index.php">Accueil</a></li>
+                        <li><a class="link <?= ($action === 'listBooks' || $action === 'single') ? 'link-active' : '' ?>" href="#">Nos livres à l'échange</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="user-actions">
-                <a class="link-notify" href="index.php?action=message" aria-label="Accéder à la messagerie">
+                <a class="link-notify <?= ($action === 'message') ? 'link-active' : '' ?>" href="index.php?action=message" aria-label="Accéder à la messagerie">
                     <i class="fa-regular fa-comment"></i> Messagerie
                     <?php if ($nbMessage > 0): ?>
                         <span class="flag-notify"><?= $nbMessage ?></span>
                     <?php endif; ?>
                 </a>
-                <a class="link" href="index.php?action=account" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a class="link" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
+                <a class="link <?= ($action === 'account' || $action === 'publicAccount') ? 'link-active' : '' ?>" href="index.php?action=account" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
+                <a class="link <?= ($action === 'connection' || $action === "register") ? 'link-active' : '' ?>" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
             </div>
         </header>
 

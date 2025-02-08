@@ -12,6 +12,10 @@
     text-decoration: underline;
 }
 
+.link-active {
+    font-weight: bold;
+}
+
 .error-message {
     color: var(--error-text-color);
     margin-bottom: 20px;
