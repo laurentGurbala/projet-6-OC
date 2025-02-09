@@ -121,8 +121,9 @@ try {
             break;
 
         default:
-            // Gère les actions non définies
-            throw new Exception("Page non trouvée.");
+            // Erreur 404
+            $view = new View("erreur 404");
+            $view->render("erreur");
             break;
     }
 } catch (ValidationException $e) {
