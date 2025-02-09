@@ -5,6 +5,7 @@
     height: 95vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
 .conversation-profil {

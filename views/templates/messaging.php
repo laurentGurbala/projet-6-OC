@@ -60,21 +60,23 @@ function formatMessageDate(DateTime $dateTime): string
 
     <!-- Aside des messages -->
     <div class="conversation">
-        <!-- Profil du contact -->
-        <div class="conversation-profil">
-            <img class="conversation-profil__image" src="<?= htmlspecialchars($currentContact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($currentContact->getLogin()) ?>">
-            <p class="conversation-profil__name"><?= htmlspecialchars($currentContact->getLogin()) ?></p>
-        </div>
+        <?php if ($currentContact) : ?>
+            <!-- Profil du contact -->
+            <div class="conversation-profil">
+                <img class="conversation-profil__image" src="<?= htmlspecialchars($currentContact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($currentContact->getLogin()) ?>">
+                <p class="conversation-profil__name"><?= htmlspecialchars($currentContact->getLogin()) ?></p>
+            </div>
 
-        <!-- Conteneur des messages -->
-        <div class="conversation-messages">
-            <?php foreach ($conversationMessages as $message): ?>
-                <div class="message <?= getMessageClass($message) ?>">
-                    <span class="timestamp text-mark <?= getMessageClass($message) ?>"><?= formatMessageDate($message->getSentAt()) ?></span>
-                    <p class="message-content <?= getMessageClass($message) ?>"><?= htmlspecialchars($message->getContent()) ?></p>
-                </div>
-            <?php endforeach; ?>
-        </div>
+            <!-- Conteneur des messages -->
+            <div class="conversation-messages">
+                <?php foreach ($conversationMessages as $message): ?>
+                    <div class="message <?= getMessageClass($message) ?>">
+                        <span class="timestamp text-mark <?= getMessageClass($message) ?>"><?= formatMessageDate($message->getSentAt()) ?></span>
+                        <p class="message-content <?= getMessageClass($message) ?>"><?= htmlspecialchars($message->getContent()) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
         <!-- Formulaire -->
         <form action="index.php?action=sendMessage" method="POST">
