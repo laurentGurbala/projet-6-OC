@@ -109,7 +109,6 @@
     line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 56px;
 }
 
 .book-list-row:nth-child(even) {
