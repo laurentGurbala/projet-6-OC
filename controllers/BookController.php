@@ -132,6 +132,7 @@ class BookController
         $author = Utils::request("author");
         $description = Utils::request("description");
         $availability = Utils::request("availability");
+        $imageBase64 = Utils::request("profileImageBase64");
 
         // Sanitiser les données
         $title = filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -141,6 +142,17 @@ class BookController
 
         if (empty($title) || empty($author) || !isset($availability)) {
             throw new ValidationException("Tous les champs sont obligatoires.");
+        }
+
+        // Gestion de l'image si fournie
+        if (!empty($imageBase64)) {
+
+            try {
+                $filePath = $this->saveBase64Image($imageBase64);
+                $book->setPhoto($filePath);
+            } catch (Exception $e) {
+                throw new ValidationException("Erreur lors du traitement de l'image : " . $e->getMessage());
+            }
         }
 
         /// Décodage des paramètres pour l'affichage
