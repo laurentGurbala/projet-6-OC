@@ -51,6 +51,30 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    /**
+     * Ajoute un nouveau livre à la base de données.
+     *
+     * @param Book $book Instance du livre à ajouter.
+     * @return void
+     */
+    public function addBook(Book $book): void
+    {
+        $sql = "INSERT INTO book (title, author, description, availability, photo, user_id, created_at) 
+            VALUES (:title, :author, :description, :availability, :photo, :user_id, NOW())";
+
+        $params = [
+            ":title" => $book->getTitle(),
+            ":author" => $book->getAuthor(),
+            ":description" => $book->getDescription(),
+            ":availability" => $book->isAvailable(),
+            ":photo" => $book->getPhoto(),
+            ":user_id" => $book->getUserId(),
+        ];
+
+        // Exécution de la requête
+        $this->db->query($sql, $params);
+    }
+
     public function getSearchBooksByTitle(string $title): array
     {
         $sql = "SELECT B.*,

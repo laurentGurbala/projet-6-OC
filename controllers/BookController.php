@@ -6,6 +6,14 @@
 
 class BookController
 {
+
+    public function showAddBookForm(): void
+    {
+        // Affiche le formulaire
+        $view = new View("ajout d'un livre");
+        $view->render("addBookForm");
+    }
+
     /**
      * Affiche le formulaire de mise à jour d'un livre.
      *
@@ -34,6 +42,77 @@ class BookController
         $view = new View("Edition d'un livre");
         $view->render("updateBookForm", ["book" => $book]);
     }
+
+    public function createBook(): void
+    {
+        $userId = $_SESSION["user_id"];
+
+        // Récupère les données du POST
+        $title = Utils::request("title");
+        $author = Utils::request("author");
+        $description = Utils::request("description");
+        $availability = Utils::request("availability");
+        $imageBase64 = Utils::request("profileImageBase64");
+
+        // Vérification des champs obligatoires
+        if (empty($title) || empty($author) || !isset($availability)) {
+            throw new ValidationException("Tous les champs obligatoires doivent être remplis.");
+        }
+
+        // Nettoyage des entrées
+        $title = filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $author = filter_var($author, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $description = filter_var($description, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $availability = filter_var($availability, FILTER_SANITIZE_NUMBER_INT);
+
+        // Création d'un nouveau livre
+        $book = new Book();
+        $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setDescription($description);
+        $book->setAvailability($availability);
+        $book->setUserId($userId);
+
+        // Gestion de l'image si fournie
+        if (!empty($imageBase64)) {
+            try {
+                $filePath = $this->saveBase64Image($imageBase64);
+                $book->setPhoto($filePath);
+            } catch (Exception $e) {
+                throw new ValidationException("Erreur lors du traitement de l'image : " . $e->getMessage());
+            }
+        }
+
+        // Sauvegarde en base
+        $bookManager = new BookManager();
+        $bookManager->addBook($book);
+
+        // Redirection après création
+        Utils::redirect("account");
+    }
+
+    private function saveBase64Image(string $base64): string
+    {
+        $uploadDir = PROJECT_ROOT . "/uploads/books/";
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        // Extraction des données de l'image
+        list($meta, $data) = explode(',', $base64);
+        preg_match('/data:image\/(\w+);base64/', $meta, $matches);
+        $extension = $matches[1] ?? 'png';
+
+        // Création d'un nom unique
+        $fileName = uniqid("books_", true) . "." . $extension;
+        $filePath = $uploadDir . $fileName;
+
+        // Décodage et sauvegarde
+        file_put_contents($filePath, base64_decode($data));
+
+        return "./uploads/books/" . $fileName;
+    }
+
 
     /**
      * Met à jour les informations d'un livre.

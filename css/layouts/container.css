@@ -34,11 +34,14 @@
     }
 }
 
+.add-book-container,
 .edit-container {
     padding: 40px 150px;
 }
 
 @media (max-width: 768px) {
+
+    .add-book-container,
     .edit-container {
         padding: 54px 0 80px;
     }

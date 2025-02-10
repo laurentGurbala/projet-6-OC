@@ -11,7 +11,7 @@
         </div>
 
         <!-- Formulaire d'édition du livre -->
-        <form class="edit-form" action="index.php?action=updateBook&bookId=<?= $book->getId() ?>" method="POST">
+        <form class="edit-form" action="index.php?action=updateBook&bookId=<?= $book->getId() ?>" method="POST" enctype="multipart/form-data">
             <!-- Title -->
             <div class="form-group">
                 <label class="input-label" for="title">Titre</label>
@@ -30,6 +30,7 @@
                 <textarea class="input-field input-field-secondary edit-textarea" name="description" id="description"><?= htmlspecialchars($book->getDescription()) ?></textarea>
             </div>
 
+            <!-- Disponibilité -->
             <div class="form-group">
                 <label class="input-label" for="availability">Disponibilité</label>
                 <select class="input-field input-field-secondary" id="availability" name="availability" required>
@@ -37,6 +38,9 @@
                     <option value="0" <?= !$book->isAvailable() ? 'selected' : '' ?>>Non disponible</option>
                 </select>
             </div>
+
+            <!-- Champ pour l'image (à soumettre avec le formulaire principal) -->
+            <input type="hidden" name="profileImageBase64" id="profileImageBase64">
 
             <button class="btn btn-primary edit-btn" type="submit">Valider</button>
         </form>

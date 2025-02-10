@@ -1,0 +1,53 @@
+.add-book-container .title-primary {
+    margin-bottom: 1.5rem;
+}
+
+.add-book-card {
+    display: flex;
+    padding: 3.5rem;
+    background: white;
+    border-radius: 20px;
+}
+
+.add-book-subtitle {
+    font-size: var(--font-size-text-small);
+    margin-bottom: 10px;
+}
+
+.add-book-image img {
+    width: 100%;
+    max-width: 488px;
+    height: 533px;
+    margin-bottom: 23px;
+}
+
+.add-book-modify {
+    text-align: right;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.add-book-form {
+    flex: 1;
+    margin-left: clamp(2rem, 6.2vw, 7rem);
+}
+
+.add-book-textarea {
+    width: 100%;
+    height: 24rem;
+    padding: 16px 12px 34px 14px;
+    font-family: var(--font-family-text);
+    font-size: 0.875rem;
+    line-height: 1.2;
+    resize: none;
+    outline: none;
+}
+
+.add-book-form select {
+    font-size: var(--font-size-text-small);
+    margin-bottom: 44px;
+}
+
+.add-book-btn {
+    padding: 22px 133px;
+}

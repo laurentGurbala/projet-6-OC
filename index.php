@@ -87,6 +87,20 @@ try {
             $bookController->uploadBookImage();
             break;
 
+        case "addBook":
+            Utils::checkIfUserIsConnected();
+            // Affiche la page de création d'un livre
+            $bookController = new BookController();
+            $bookController->showAddBookForm();
+            break;
+
+        case "createBook":
+            utils::checkIfUserIsConnected();
+            // Gère la création d'un livre
+            $bookController = new BookController();
+            $bookController->createBook();
+            break;
+
         case "editBook":
             Utils::checkIfUserIsConnected();
             // Affiche la page d'édition d'un livre

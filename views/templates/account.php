@@ -40,8 +40,9 @@ function getAvailabilityText(bool $isAvailable): string
             <p class="profil-library">bibliotheque</p>
             <div class="profil-nb-book">
                 <img src="./images/svg/book.svg" alt="logo de 2 livres">
-                <p><?= $bookCount ?> livres</p>
+                <p><?= $bookCount <= 1 ? $bookCount . ' livre' : $bookCount . ' livres' ?></p>
             </div>
+            <p><a href="index.php?action=addBook">Ajouter un livre</a></p>
         </div>
 
         <!-- infos perso -->
