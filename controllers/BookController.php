@@ -127,6 +127,9 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
+        // Récupère l'ancienne image du livre
+        $oldImage = $book->getPhoto();
+
         // Récupère les données du POST
         $title = Utils::request("title");
         $author = Utils::request("author");
@@ -148,6 +151,12 @@ class BookController
         if (!empty($imageBase64)) {
 
             try {
+                // Supprime l'ancienne image si elle existe
+                if (!empty($oldImage) && file_exists(PROJECT_ROOT . "/" . $oldImage)) {
+                    unlink(PROJECT_ROOT . "/" . $oldImage);
+                }
+
+                // Sauvegarde la nouvelle image
                 $filePath = $this->saveBase64Image($imageBase64);
                 $book->setPhoto($filePath);
             } catch (Exception $e) {
