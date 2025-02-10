@@ -61,9 +61,10 @@ function formatMessageDate(DateTime $dateTime): string
     <!-- Aside des messages -->
     <div class="conversation">
         <?php if ($currentContact) : ?>
+            <?php $profilPhoto = !empty($currentContact->getProfileImage()) ? htmlspecialchars($currentContact->getProfileImage()) : "images/photos/checker.png"; ?>
             <!-- Profil du contact -->
             <div class="conversation-profil">
-                <img class="conversation-profil__image" src="<?= htmlspecialchars($currentContact->getProfileImage()) ?>" alt="Photo du profil de <?= htmlspecialchars($currentContact->getLogin()) ?>">
+                <img class="conversation-profil__image" src="<?= $profilPhoto ?>" alt="Photo du profil de <?= htmlspecialchars($currentContact->getLogin()) ?>">
                 <p class="conversation-profil__name"><?= htmlspecialchars($currentContact->getLogin()) ?></p>
             </div>
 

@@ -3,7 +3,9 @@
 /**
  * Affichage de la vue Single Page, détail d'un livre
  */
+
 $bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "images/photos/checker.png";
+$profilPhoto = !empty($owner->getProfileImage()) ? htmlspecialchars($owner->getProfileImage()) : "images/photos/checker.png";
 ?>
 
 <!-- Lien de retour -->
@@ -31,7 +33,7 @@ $bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "
             <p class="single-subtitle">propriétaire</p>
             <a href="index.php?action=publicAccount&userId=<?= $owner->getId() ?>" class="single-owner">
                 <div class="image-container">
-                    <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= htmlspecialchars($owner->getLogin()) ?>">
+                    <img src="<?= $profilPhoto ?>" alt="Photo de profil de <?= htmlspecialchars($owner->getLogin()) ?>">
                 </div>
                 <p><?= htmlspecialchars($owner->getLogin()) ?></p>
             </a>

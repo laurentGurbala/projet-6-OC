@@ -3,13 +3,15 @@
 /**
  * Affiche la page public d'un compte utilisateur
  */
+
+$profilPhoto = !empty($owner->getProfileImage()) ? htmlspecialchars($owner->getProfileImage()) : "images/photos/checker.png";
 ?>
 
 
 <div class="public-container">
     <!-- Profil -->
     <section class="profil">
-        <img src="<?= htmlspecialchars($owner->getProfileImage()) ?>" alt="" class="profil-image">
+        <img src="<?= $profilPhoto ?>" alt="" class="profil-image">
         <div class="separator"></div>
         <h1 class="profil-title"><?= htmlspecialchars($owner->getLogin()) ?></h1>
         <p class="profil-date">Membre depuis <?= Utils::formatDuration($owner->getCreatedAt()) ?></p>
