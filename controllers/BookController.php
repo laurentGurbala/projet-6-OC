@@ -192,9 +192,21 @@ class BookController
     public function deleteBook(): void
     {
         $id = Utils::request("id", -1);
+        $bookManager = new BookManager();
+
+        // Récupération du livre pour obtenir l'image
+        $book = $bookManager->getBookById($id);
+
+        // Gestion de la suppression de l'image
+        if ($book && $book->getPhoto()) {
+            $photoPath = PROJECT_ROOT . "/" . $book->getPhoto();
+
+            if (file_exists($photoPath)) {
+                unlink($photoPath);
+            }
+        }
 
         // Supprimer le livre
-        $bookManager = new BookManager();
         $bookManager->deleteBook($id);
 
         // Rediriger l'utilisateur vers son compte
