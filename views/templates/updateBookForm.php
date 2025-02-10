@@ -1,3 +1,11 @@
+<?php
+
+/**
+ * Affichage de la vue d'édition d'un livre
+ */
+$bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "images/photos/checker.png";
+?>
+
 <section class="edit-container">
     <a class="text-mark edit-back" href="index.php?action=account"><i class="fa-solid fa-arrow-left"></i> retour</a>
     <h1 class="title-primary">Modifier les informations</h1>
@@ -6,7 +14,7 @@
         <!-- Image du livre -->
         <div class="edit-image">
             <p class="text-mark edit-subtitle">photo</p>
-            <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
+            <img src="<?= $bookPhoto ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
             <p class="edit-modify" id="openModalBtn">modifier la photo</p>
         </div>
 

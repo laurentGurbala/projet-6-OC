@@ -3,6 +3,7 @@
 /**
  * Affichage de la vue Single Page, détail d'un livre
  */
+$bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "images/photos/checker.png";
 ?>
 
 <!-- Lien de retour -->
@@ -11,7 +12,7 @@
 </div>
 
 <div class="single-container">
-    <img class="single-image" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="La photo de couverture du livre <?= htmlspecialchars($book->getTitle()) ?>">
+    <img class="single-image" src="<?= $bookPhoto ?>" alt="La photo de couverture du livre <?= htmlspecialchars($book->getTitle()) ?>">
 
     <section class="single-section">
         <div class="single-content">
@@ -28,7 +29,7 @@
             </p>
             <!-- Propriétaire -->
             <p class="single-subtitle">propriétaire</p>
-            <a href="index.php?action=publicAccount&userId=<?= htmlspecialchars($owner->getId()) ?>" class="single-owner">
+            <a href="index.php?action=publicAccount&userId=<?= $owner->getId() ?>" class="single-owner">
                 <div class="image-container">
                     <img src="<?= $owner->getProfileImage() ?>" alt="Photo de profil de <?= htmlspecialchars($owner->getLogin()) ?>">
                 </div>

@@ -35,9 +35,10 @@
         <!-- list -->
         <div class="card-list">
             <?php foreach ($books as $book): ?>
+                <?php $bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "images/photos/checker.png"; ?>
                 <div class="card">
                     <a href="index.php?action=single&bookId=<?= htmlspecialchars($book->getId()) ?>">
-                        <img class="card-image" src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="couverture du livre">
+                        <img class="card-image" src="<?= $bookPhoto ?>" alt="couverture du livre">
                         <div class="card-content">
                             <p class="card-title"><?= htmlspecialchars($book->getTitle()) ?></p>
                             <p class="card-author text-mark"><?= htmlspecialchars($book->getAuthor()) ?></p>

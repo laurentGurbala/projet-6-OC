@@ -42,10 +42,11 @@
 
             <!-- Row -->
             <?php foreach ($books as $book): ?>
+                <?php $bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "images/photos/checker.png"; ?>
                 <div class="book-list-row">
                     <div class="book-list-content">
                         <div class="book-list-image">
-                            <img src="<?= htmlspecialchars($book->getPhoto()) ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
+                            <img src="<?= $bookPhoto ?>" alt="Photo du livre <?= htmlspecialchars($book->getTitle()) ?>">
                         </div>
 
                         <div class="book-list-details">
