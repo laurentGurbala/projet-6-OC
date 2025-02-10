@@ -24,6 +24,11 @@ class HomeController
         $view->render("home", ["books" => $lastBooks]);
     }
 
+    /**
+     * Affiche la liste des livres avec option de recherche par titre.
+     *
+     * @return void
+     */
     public function showListBooks(): void
     {
         // Récupération éventuelle du filtre
@@ -43,6 +48,11 @@ class HomeController
         $view->render("listBooks", ["books" => $books]);
     }
 
+    /**
+     * Affiche la page d'un livre spécifique avec ses détails et son propriétaire.
+     *
+     * @return void
+     */
     public function showSinglePage(): void
     {
         $bookId = Utils::request("bookId", -1);
@@ -55,10 +65,16 @@ class HomeController
         $userManager = new UserManager();
         $owner = $userManager->getUserById($book->getUserId());
 
-        $view = new View("Livre " . htmlspecialchars($book->getTitle()));
+        // Affichage sécurisé du titre du livre
+        $view = new View("Livre " . htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8'));
         $view->render("singlePage", ["book" => $book, "owner" => $owner]);
     }
 
+    /**
+     * Affiche le profil public d'un utilisateur avec ses livres.
+     *
+     * @return void
+     */
     public function showPublicAccount(): void
     {
         $userId = Utils::request("userId", -1);
@@ -71,11 +87,11 @@ class HomeController
         $bookManager = new BookManager();
         $books = $bookManager->getBooksByUserId($userId);
 
-        // Récupère le calcul des livres
+        // Récupère le nombre de livres
         $bookCount = $bookManager->countBooksByUserId($userId);
 
         // Crée la vue
-        $view = new View("Compte de " . htmlspecialchars($owner->getLogin()));
+        $view = new View("Compte de " . htmlspecialchars($owner->getLogin(), ENT_QUOTES, 'UTF-8'));
         $view->render("publicAccount", ["owner" => $owner, "books" => $books, "bookCount" => $bookCount]);
     }
 }

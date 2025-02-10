@@ -89,6 +89,11 @@ class MessageController
         }
     }
 
+    /**
+     * Récupère le nombre de nouveaux messages pour l'utilisateur connecté.
+     *
+     * @return int Nombre de nouveaux messages non lus.
+     */
     public function nbNewMessages(): int
     {
         $nbMessage = 0;

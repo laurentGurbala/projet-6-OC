@@ -92,6 +92,12 @@ class UserManager extends AbstractEntityManager
         return $result ? $this->mapToUser($result) : null;
     }
 
+    /**
+     * Récupère une liste d'utilisateurs à partir d'un tableau d'IDs.
+     *
+     * @param array $userIds Tableau contenant les IDs des utilisateurs à récupérer.
+     * @return array Liste des objets User correspondant aux IDs fournis.
+     */
     public function getUsersByIds(array $userIds): array
     {
         $users = [];
@@ -101,6 +107,12 @@ class UserManager extends AbstractEntityManager
         return $users;
     }
 
+    /**
+     * Convertit un tableau de données en objet User.
+     *
+     * @param array $data Tableau associatif contenant les données de l'utilisateur.
+     * @return User Objet User correspondant aux données fournies.
+     */
     private function mapToUser(array $data): User
     {
         $user = new User();

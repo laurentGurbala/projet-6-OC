@@ -7,6 +7,11 @@
 class BookController
 {
 
+    /**
+     * Affiche le formulaire d'ajout d'un livre.
+     *
+     * @return void
+     */
     public function showAddBookForm(): void
     {
         // Affiche le formulaire
@@ -43,27 +48,27 @@ class BookController
         $view->render("updateBookForm", ["book" => $book]);
     }
 
+    /**
+     * Crée un livre et l'enregistre en base de données.
+     *
+     * @return void
+     * @throws ValidationException Si des champs obligatoires sont manquants.
+     */
     public function createBook(): void
     {
         $userId = $_SESSION["user_id"];
 
-        // Récupère les données du POST
-        $title = Utils::request("title");
-        $author = Utils::request("author");
-        $description = Utils::request("description");
-        $availability = Utils::request("availability");
+        // Récupération et assainissement des données
+        $title = htmlspecialchars(Utils::request("title"), ENT_QUOTES, 'UTF-8');
+        $author = htmlspecialchars(Utils::request("author"), ENT_QUOTES, 'UTF-8');
+        $description = htmlspecialchars(Utils::request("description"), ENT_QUOTES, 'UTF-8');
+        $availability = filter_var(Utils::request("availability"), FILTER_SANITIZE_NUMBER_INT);
         $imageBase64 = Utils::request("profileImageBase64");
 
         // Vérification des champs obligatoires
         if (empty($title) || empty($author) || !isset($availability)) {
             throw new ValidationException("Tous les champs obligatoires doivent être remplis.");
         }
-
-        // Nettoyage des entrées
-        $title = filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $author = filter_var($author, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $description = filter_var($description, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $availability = filter_var($availability, FILTER_SANITIZE_NUMBER_INT);
 
         // Création d'un nouveau livre
         $book = new Book();
@@ -91,6 +96,13 @@ class BookController
         Utils::redirect("account");
     }
 
+    /**
+     * Sauvegarde une image encodée en base64.
+     *
+     * @param string $base64 Image encodée en base64.
+     * @return string Chemin du fichier enregistré.
+     * @throws Exception Si la sauvegarde échoue.
+     */
     private function saveBase64Image(string $base64): string
     {
         $uploadDir = PROJECT_ROOT . "/uploads/books/";
@@ -113,7 +125,6 @@ class BookController
         return "./uploads/books/" . $fileName;
     }
 
-
     /**
      * Met à jour les informations d'un livre.
      *
@@ -130,18 +141,12 @@ class BookController
         // Récupère l'ancienne image du livre
         $oldImage = $book->getPhoto();
 
-        // Récupère les données du POST
-        $title = Utils::request("title");
-        $author = Utils::request("author");
-        $description = Utils::request("description");
-        $availability = Utils::request("availability");
+        // Récupération et assainissement des données
+        $title = htmlspecialchars(Utils::request("title"), ENT_QUOTES, 'UTF-8');
+        $author = htmlspecialchars(Utils::request("author"), ENT_QUOTES, 'UTF-8');
+        $description = htmlspecialchars(Utils::request("description"), ENT_QUOTES, 'UTF-8');
+        $availability = filter_var(Utils::request("availability"), FILTER_SANITIZE_NUMBER_INT);
         $imageBase64 = Utils::request("profileImageBase64");
-
-        // Sanitiser les données
-        $title = filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $author = filter_var($author, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $description = filter_var($description, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $availability = filter_var($availability, FILTER_SANITIZE_NUMBER_INT);
 
         if (empty($title) || empty($author) || !isset($availability)) {
             throw new ValidationException("Tous les champs sont obligatoires.");
@@ -164,17 +169,11 @@ class BookController
             }
         }
 
-        /// Décodage des paramètres pour l'affichage
-        $title_decoded = html_entity_decode($title, ENT_QUOTES, 'UTF-8');
-        $author_decoded = html_entity_decode($author, ENT_QUOTES, 'UTF-8');
-        $description_decoded = html_entity_decode($description, ENT_QUOTES, 'UTF-8');
-        $availability_decoded = html_entity_decode($availability, ENT_QUOTES, 'UTF-8');
-
-        // Mise à jour du livre avec les valeurs décodées
-        $book->setTitle($title_decoded);
-        $book->setAuthor($author_decoded);
-        $book->setDescription($description_decoded);
-        $book->setAvailability($availability_decoded);
+        // Décodage pour affichage correct
+        $book->setTitle(html_entity_decode($title, ENT_QUOTES, 'UTF-8'));
+        $book->setAuthor(html_entity_decode($author, ENT_QUOTES, 'UTF-8'));
+        $book->setDescription(html_entity_decode($description, ENT_QUOTES, 'UTF-8'));
+        $book->setAvailability($availability);
 
 
         // Enregistre dans la BDD

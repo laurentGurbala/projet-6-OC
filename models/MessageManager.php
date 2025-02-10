@@ -130,6 +130,12 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Compte le nombre de nouveaux messages non lus pour un utilisateur donné.
+     *
+     * @param int $userId L'ID de l'utilisateur destinataire des messages.
+     * @return int Le nombre de messages non lus.
+     */
     public function countNewMessages(int $userId)
     {
         $sql = "SELECT COUNT(*) AS nb FROM message
@@ -142,6 +148,14 @@ class MessageManager extends AbstractEntityManager
         return $result["nb"] ?? 0;
     }
 
+    /**
+     * Marque comme lus tous les messages envoyés par un expéditeur spécifique
+     * à un utilisateur donné, si ces messages étaient encore non lus.
+     *
+     * @param int $userId L'ID du destinataire des messages.
+     * @param int $senderId L'ID de l'expéditeur des messages.
+     * @return void
+     */
     public function markMessageAsRead(int $userId, int $senderId): void
     {
         $sql = "UPDATE message SET view = 1
