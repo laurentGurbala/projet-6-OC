@@ -6,7 +6,7 @@ Ce guide explique comment installer et configurer l'application **TomTroc** en l
 
 Avant de commencer, assurez-vous d'avoir installé :
 
-- [PHP](https://www.php.net/) (version 8.0 ou ultérieure)
+- [PHP](https://www.php.net/) (version 8.2 ou ultérieure)
 - [MySQL/MariaDB](https://mariadb.org/) (avec phpMyAdmin si nécessaire)
 - [Apache](https://httpd.apache.org/) ou un serveur local comme [XAMPP](https://www.apachefriends.org/fr/index.html) ou [WampServer](https://www.wampserver.com/)
 
@@ -45,9 +45,6 @@ Dans le dossier `config`, créez un fichier `_config.php` en vous basant sur `_c
 
 ```php
 <?php
-
-// On démarre la session
-session_start();
 
 // Chemin vers la racine du projet
 define("PROJECT_ROOT", dirname(__DIR__));
