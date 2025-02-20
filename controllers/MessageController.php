@@ -99,7 +99,7 @@ class MessageController
         $nbMessage = 0;
 
         // Vérifier que l'utilisateur est connecté
-        if (isset($_SESSION["user_id"])) {
+        if (isset($_SESSION["user_id"]) && is_int($_SESSION["user_id"])) {
             // Récupération du nombre de nouveaux messages
             $messageManager = new MessageManager();
             $nbMessage = $messageManager->countNewMessages($_SESSION["user_id"]);

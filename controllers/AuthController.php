@@ -26,9 +26,14 @@ class AuthController
      */
     public function showConnection(): void
     {
+        if (isset($_SESSION["user_id"])) {
+            unset($_SESSION["user_id"]);
+        }
+
         $view = new View("Connexion");
         $view->render("connection");
     }
+
 
     /**
      * Gère l'inscription d'un nouvel utilisateur.

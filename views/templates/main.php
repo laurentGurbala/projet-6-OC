@@ -66,7 +66,11 @@ $action = Utils::request("action", "home");
                     <?php endif; ?>
                 </a>
                 <a class="link <?= ($action === 'account' || $action === 'publicAccount') ? 'link-active' : '' ?>" href="index.php?action=account" aria-label="Mon compte"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a class="link <?= ($action === 'connection' || $action === "register") ? 'link-active' : '' ?>" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
+                <?php if (isset($_SESSION["user_id"]) && is_int($_SESSION["user_id"])): ?>
+                    <a class="link <?= ($action === 'connection' || $action === "register") ? 'link-active' : '' ?>" href="index.php?action=connection" aria-label="Se connecter">Déconnexion</a>
+                <?php else : ?>
+                    <a class="link <?= ($action === 'connection' || $action === "register") ? 'link-active' : '' ?>" href="index.php?action=connection" aria-label="Se connecter">Connexion</a>
+                <?php endif; ?>
             </div>
         </header>
 
