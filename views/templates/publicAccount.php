@@ -20,7 +20,7 @@ $profilPhoto = !empty($owner->getProfileImage()) ? htmlspecialchars($owner->getP
             <img src="./images/svg/book.svg" alt="logo de 2 livres">
             <p><?= $bookCount ?> livres</p>
         </div>
-        <a href="index.php?action=message&conversationId=<?= $owner->getId() ?>" type="button" class="btn btn-alt">Écrire un message</a>
+        <a href="index.php?action=message&conversationId=<?= $owner->getId() ?>" class="btn btn-alt">Écrire un message</a>
     </section>
 
     <!-- Liste des livres -->

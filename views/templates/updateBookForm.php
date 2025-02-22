@@ -41,7 +41,7 @@ $bookPhoto = !empty($book->getPhoto()) ? htmlspecialchars($book->getPhoto()) : "
             <!-- Disponibilité -->
             <div class="form-group">
                 <label class="input-label" for="availability">Disponibilité</label>
-                <select class="input-field input-field-secondary" id="availability" name="availability" required>
+                <select class="input-field input-field-secondary" id="availability" name="availability">
                     <option value="1" <?= $book->isAvailable() ? 'selected' : '' ?>>Disponible</option>
                     <option value="0" <?= !$book->isAvailable() ? 'selected' : '' ?>>Non disponible</option>
                 </select>
